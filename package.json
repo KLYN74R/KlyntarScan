@@ -1,0 +1,23 @@
+{
+  "name": "klyntarscan",
+  "version": "1.0.0",
+  "description": "Initial explorer for symbiotes on KLYNTAR",
+  "main": "index.js",
+  "type":"module",
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KLYN74R/KlyntarScan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KLYN74R/KlyntarScan/issues"
+  },
+  "homepage": "https://github.com/KLYN74R/KlyntarScan#readme",
+  "dependencies": {
+    "node-fetch": "^3.2.4",
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.3.0"
+  }
+}
