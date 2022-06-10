@@ -1,0 +1,305 @@
+<!--
+
+                                                            Created by Vlad Chernenko & Ivan Ushkov for KLYNTAR and the other projects
+    
+                                                                                            2021
+    
+                                                                                    All rights reserved
+
+    
+
+-->
+
+<head>
+    <title>KlyntarScan</title>
+    <link rel="shortcut icon" href="icon_32.ico">
+</head>
+<div class="holder">
+
+    <div class="new-year">
+
+        <h1>explorer will be activated after Klyntar</h1>
+
+        <?xml version="1.0" encoding="UTF-8"?>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400px" height="267px" viewBox="0 0 400 267" version="1.1">
+                
+            <g id="surface1">
+                <path style=" stroke:none;fill-rule:nonzero;fill:rgb(179, 14, 14);fill-opacity:1;" d="M 323.179688 131.21875 C 323.179688 63.5 268.351562 8.605469 200.71875 8.605469 C 133.089844 8.605469 78.261719 63.5 78.261719 131.21875 C 78.261719 198.933594 133.089844 253.832031 200.71875 253.832031 C 268.351562 253.832031 323.179688 198.933594 323.179688 131.21875 Z M 323.179688 131.21875 "/>
+                <path style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M 210.461914 321.450672 L 306.460468 40.449297 " transform="matrix(0.504601,-0.0160364,0.0156649,0.494144,-10.051097,42.622075)"/>
+                <path style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M 99.54065 321.880383 L 195.535637 40.88069 " transform="matrix(-0.489025,-0.125586,-0.117322,0.457988,245.72666,63.575906)"/>
+                <path style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M 100.032817 319.119342 L 196.031546 38.117858 " transform="matrix(-0.434071,-0.266929,-0.34302,0.559203,312.514488,46.022579)"/>
+                <path style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M 210.458918 321.450496 L 306.465205 40.449371 " transform="matrix(0.504601,-0.0160364,0.0156649,0.494144,71.282449,86.676801)"/>
+                <path style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M 99.535807 321.878373 L 195.538289 40.880735 " transform="matrix(-0.489025,-0.125586,-0.117322,0.457988,327.059994,107.630906)"/>
+                <path style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M 100.036431 319.120508 L 196.03516 38.119024 " transform="matrix(-0.434071,-0.266929,-0.34302,0.559203,393.848488,90.077579)"/>
+            </g>
+        
+        </svg>
+            
+    </div>
+
+
+<style type="text/css">
+
+
+    @import url('https://fonts.googleapis.com/css?family=Major+Mono+Display');
+    
+    
+    .holder {
+        zoom:0.8;
+        position: absolute;
+        background-color: #ffffff;
+        left: 0%;
+        top: 0%;
+        width: 100%;
+        height: 100%;
+    }
+
+    .new-year {
+        font-family: 'Major Mono Display', monospace;
+        color: #333333;
+        font-size: 20px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        transform: translateX(-50%) translateY(-50%);
+        text-align: center;
+    }
+
+    .year {
+      position: relative;
+      left: 50%;
+      display: table;
+      font-size: 6em;
+      transform: translateX(-50%);
+    }
+
+    .year2 {
+        transform: translateX(-50%) rotateX(180deg);
+        opacity: 0.2;
+    }
+
+    .digit {
+        display: inline-block;
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+        opacity: 0;
+    }
+
+    .controls {
+        margin-top: 30px;
+    }
+
+    .control {
+        display: inline-block;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 0.8em;
+        border-left: 1px solid #333333;
+        opacity: 0;
+        position: relative;
+        top: 100px;
+    }
+
+
+    .control:first-child {
+        border-left: none;
+    }
+
+
+    .triangles {
+        position: absolute;
+        left: 0%;
+        top: 0%;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+
+
+    .triangle {
+        width: 0; 
+        height: 0; 
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid #333333;
+        position: absolute;
+        opacity: 0;
+    }
+
+
+    </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+
+<script>
+
+(()=>{
+
+    let animation = {
+        
+        newYear: document.querySelector(".new-year"),
+    
+        range:(min,max)=>Math.floor(Math.random() * (max - min + 1) + min),
+
+
+
+        get period() {
+            
+            let dateFuture = new Date(new Date().getFullYear() + 1, 0, 1),
+                dateNow = new Date(),
+                seconds = Math.floor((dateFuture - (dateNow))/1000),
+                minutes = Math.floor(seconds/60),
+                hours = Math.floor(minutes/60),
+                days = Math.floor(hours/24)
+      
+            hours = hours-(days*24)
+      
+            minutes = minutes-(days*24*60)-(hours*60)
+      
+            seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60)
+      
+            return {year: new Date().getFullYear() + 1,days,hours,minutes,seconds}
+    
+        },
+
+        element:(parent, type, className, html)=>{
+            
+            let element = document.createElement(type)
+            
+            element.className = className
+            
+            if (typeof html !== "undefined") element.innerHTML = html
+    
+            parent.appendChild(element)
+            
+            return element
+        },
+
+
+        year:className=>{
+      
+            let timeline = new TimelineMax(),
+      
+                year = animation.element(animation.newYear, "div", className)
+      
+
+            for (let i=0; i<=String(animation.period.year).length-1; i++){
+
+                let digit = animation.element(year, "div", "digit", String(animation.period.year).substr(i, 1))
+
+                digit.style.top = (0 - (digit.clientHeight * 2)) + "px"
+                
+                timeline.to(digit, 0.5, {top: 0, opacity: 1, ease: Bounce.easeOut})
+            
+            }
+        
+            return year
+        },
+
+        animate:()=>{
+            
+            let year1 = animation.year("year year1"),
+                year2 = animation.year("year year2"),
+                controls = animation.element(animation.newYear, "div", "controls"),
+                days = animation.element(controls, "div", "control days"),
+                hours = animation.element(controls, "div", "control hours"),
+                minutes = animation.element(controls, "div", "control minutes"),
+                seconds = animation.element(controls, "div", "control seconds")
+      
+      
+            animation.controls={controls,days,hours,minutes,seconds}
+
+            animation.render()
+      
+      
+            let triangles = animation.element(year1, "div", "triangles"),
+                fullTimeline = new TimelineMax(),
+                triangleStorage = []
+
+
+            for (let i=0; i<=50-1; i++) {
+            
+                let timeline = new TimelineMax({repeat: -1}),
+                    triangle = animation.element(triangles, "div", "triangle");
+                
+                triangle.style.top = -50 + "px";
+                
+                let time = animation.range(0, 100) / 100,
+                    
+                    duration = 1,
+                    
+                    direction = animation.range(1, 2) == 1 ? -1 : 1
+        
+
+
+                timeline
+                .set(triangle, {scale: animation.range(10, 20) / 10}, time)
+                .to(triangle, duration * 0.5, {opacity: 1}, time)
+                .to(triangle, duration, {top: "200%", rotationZ: animation.range(180, 360) * direction, rotationX: animation.range(180, 360) * direction}, time)
+                .to(triangle, duration * 0.5, {opacity: 0}, time + (duration * 0.5))
+        
+                fullTimeline.add(timeline, 0)
+        
+                triangleStorage.push(triangle)
+            
+            }
+
+
+
+            let previousWidth = 0,
+  
+            checkWidth=()=>{
+        
+                    if (Math.abs(previousWidth - year1.clientWidth) > 1) {
+          
+                        for (let i=0; i<=triangleStorage.length-1; i++) triangleStorage[i].style.left = (-5 + animation.range(0, year1.clientWidth)) + "px"
+          
+                        previousWidth = year1.clientWidth
+        
+                    }
+        
+                    setTimeout(checkWidth, 100)
+      
+            }
+
+            checkWidth()
+      
+            return new TimelineMax()
+                .to(days, 0.5, {top: 0, opacity: 1}, 0)
+                .to(hours, 0.5, {top: 0, opacity: 1}, 0.25)
+                .to(minutes, 0.5, {top: 0, opacity: 1}, 0.5)
+                .to(seconds, 0.5, {top: 0, opacity: 1}, 0.75)
+                .set(triangles, {opacity: 1}, 3)
+                .add(fullTimeline, 3)
+
+        },
+
+        plural:property=>{
+
+            let period = animation.period
+            if (String(period[property]).length <= 1) period[property] = "0" + period[property]
+            return Number(period[property]) > 1 ? period[property] + " " + property : period[property] + " " + property.substr(0, property.length-1)
+        },
+
+        render:()=>{
+        
+            animation.controls.seconds.innerHTML = animation.plural("seconds")
+            animation.controls.minutes.innerHTML = animation.plural("minutes")
+            animation.controls.hours.innerHTML = animation.plural("hours")
+            animation.controls.days.innerHTML = animation.plural("days")
+        
+            requestAnimationFrame(animation.render)
+        
+        }
+  
+    }
+
+    animation.animate()
+
+})();
+
+</script>
+
+</div>
