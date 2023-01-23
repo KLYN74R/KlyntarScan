@@ -1,0 +1,34 @@
+.navigation {
+    font-family: 'Major Mono Display', monospace;
+    font-weight: bold;
+}
+
+.navigation ul li {
+    color: #DB0000;
+}
+
+.activeLink {
+    cursor: default;
+}
+.activeLink::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: red;
+    position: relative;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    cursor: default;
+}
+
+.openIcon {
+    position: relative;
+    transform: rotate(0);
+    transition: 0.1s all;
+}
+
+.openIconActive {
+    transform: rotate(180deg);
+}
