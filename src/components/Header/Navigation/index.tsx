@@ -29,7 +29,7 @@ const Navigation: React.FC = () => {
     const handleToggleMenu = () => setIsOpened(isOpened => !isOpened);
 
     return (
-      <nav className={cls(styles.navigation, 'md:mt-16 mt-10 mb-20')}>
+      <nav className={cls(styles.navigation, 'md:mt-16 mt-10 md:mb-20 mb-10')}>
 
           <div className='lg:block hidden'>
               <h2 className='block text-center text-xl text-green-600'>choose a wAy to work</h2>

@@ -1,3 +1,3 @@
 window.env = {
-    'BACKEND_API': 'localhost'
+    'BACKEND_API': 'http://localhost'
 }
