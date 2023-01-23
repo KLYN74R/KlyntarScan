@@ -24,3 +24,6 @@ yarn-error.log*
 
 # IDE
 /.idea
+
+# config
+/public/env.js
