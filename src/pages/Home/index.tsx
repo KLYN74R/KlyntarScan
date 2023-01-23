@@ -4,7 +4,7 @@ import { HomeLayout } from '../../layouts';
 const Home: React.FC = () => {
   return (
     <HomeLayout>
-        Hello World!
+        To get started, select a workflow...
     </HomeLayout>
   );
 };

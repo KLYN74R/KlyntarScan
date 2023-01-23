@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Header } from '../../components';
+import { Header, Footer } from '../../components';
 import { Container } from '../index';
 
 type Props = {
@@ -14,6 +14,8 @@ const HomeLayout: FC<Props> = ({ children }) => {
             <Container>
                 <main>{children}</main>
             </Container>
+            <Footer
+            />
         </>
     );
 };

@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 
 import Home from './Home';
 import CheckpointStats from './CheckpointStats';
+import SymbioteInfo from './SymbioteInfo';
 
 const AppRouter: React.FC = () => {
     return (
@@ -10,6 +11,7 @@ const AppRouter: React.FC = () => {
             <Route path='*' element={<Navigate to='/' replace />} />
             <Route path='/' element={<Home />} />
             <Route path='latest_checkpoint' element={<CheckpointStats />} />
+            <Route path='symbiote_info' element={<SymbioteInfo />} />
         </Routes>
     );
 };
