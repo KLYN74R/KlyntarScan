@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../../utils/axios';
+import { ENDPOINTS } from '../../types/endpoints';
 import JSONPretty from 'react-json-pretty';
 import 'react-json-pretty/themes/1337.css';
 
@@ -13,10 +14,10 @@ const SymbioteInfo: React.FC = () => {
   useEffect(() => {
       setIsLoading(true);
       (async () => {
-          await api.get('get_symbiote_info')
+          await api.get(ENDPOINTS.SYMBIOTE_INFO)
               .then(response => setSymbioteData(response.data))
               .catch(e => { throw e })
-              .finally(() => setIsLoading(false));
+              .finally(() => setTimeout(() => setIsLoading(false), 300));
       })();
   }, []);
 
