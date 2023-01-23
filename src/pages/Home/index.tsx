@@ -1,10 +1,11 @@
 import React from 'react';
+import { HomeLayout } from '../../layouts';
 
 const Home: React.FC = () => {
   return (
-    <div>
-        <h2>Hello Home!</h2>
-    </div>
+    <HomeLayout>
+        Hello World!
+    </HomeLayout>
   );
 };
 
