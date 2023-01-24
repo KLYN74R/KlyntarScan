@@ -20,7 +20,8 @@ const CheckpointStats: React.FC = () => {
                 setCheckpointData({
                     ...response.data.HEADER,
                     ...response.data.PAYLOAD,
-                    TIMESTAMP: new Date(response.data.TIMESTAMP).toString()
+                    TIMESTAMP: new Date(response.data.TIMESTAMP).toString(),
+                    TX: response.data.TX
                 });
             })
             .catch(e => {
@@ -38,8 +39,100 @@ const CheckpointStats: React.FC = () => {
         ) : (
             <div>
                 <h2 className='uppercase tracking-wide mb-8'>Latest checkpoint stats</h2>
-                <JSONPretty id="json-pretty" data={checkpointData}></JSONPretty>
-                {isError && <p className='text-xl text-red-600'>Connection failed.</p>}
+
+                {isError ? <p className='text-xl text-red-600'>Connection failed.</p> : <div>
+                    {checkpointData && (
+                        <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
+                            <h3 className='text-xl text-red-600 italic mb-4'>Header</h3>
+
+                            <p>
+                                <span>INDEX: <span className='pl-1 font-mono text-xl'>{checkpointData.ID}</span></span>
+                                {/*{checkpointData.ID === -1 && (<span className='text-blue-600 italic ml-2'>(genesis)</span>)}*/}
+                            </p>
+
+                            <p className='mt-3'>
+                                <span>PAYLOAD HASH: <span className='pl-1 font-mono'>{checkpointData.PAYLOAD_HASH}</span></span>
+                                {checkpointData.PAYLOAD_HASH === '' && (<>
+                                    <span>&ldquo; &rdquo;</span>
+                                    <span className='text-blue-600 italic ml-2'>(genesis)</span>
+                                </>)}
+                            </p>
+
+                            <p className='mt-3'>
+                                <span>AGGREGATED PUBLIC KEY OF QUORUM: <span className='pl-1 font-mono'>{checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY}</span></span>
+                                {checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY === '' && (<>
+                                    <span>&ldquo; &rdquo;</span>
+                                    <span className='text-blue-600 italic ml-2'>(genesis)</span>
+                                </>)}
+                            </p>
+
+                            <p className='mt-3'>
+                                <span>AGGREGATED SIGNATURE OF QUORUM: <span className='pl-1 font-mono'>{checkpointData.QUORUM_AGGREGATED_SIGNATURE}</span></span>
+                                {checkpointData.QUORUM_AGGREGATED_SIGNATURE === '' && (<>
+                                    <span>&ldquo; &rdquo;</span>
+                                    <span className='text-blue-600 italic ml-2'>(genesis)</span>
+                                </>)}
+                            </p>
+
+                            <p className='mt-3'>
+                                <span>AFK SIGNERS: </span>
+                                {checkpointData.AFK_VALIDATORS.length === 0 ? (<>
+                                    <span className='font-mono'>[]</span>
+                                    <span className='text-blue-600 italic ml-2'>(genesis)</span>
+                                </>) : (
+                                    <div>
+                                        [
+                                        <ul>
+                                            {checkpointData.AFK_VALIDATORS.map((validator: string, idx: number) => (
+                                                <li key={idx} className='font-mono ml-3 mt-2 first:mt-0'>{validator}</li>
+                                            ))}
+                                        </ul>
+                                        ]
+                                    </div>
+                                )}
+                            </p>
+
+                            <p className='mt-3'>
+                                <span>PUBLISHED AT: <span className='pl-1 font-mono'>{checkpointData.TIMESTAMP}</span></span>
+                            </p>
+
+                            <p className='mt-3'>
+                                <span>VIA TX: <span className='pl-1 font-mono'>{checkpointData.TX}</span></span>
+                            </p>
+
+                            <h3 className='text-xl text-red-600 italic mt-8 mb-4'>Payload info</h3>
+
+                            <p>
+                                <span>PREVIOUS PAYLOAD CHECKPOINT HASH: <span className='pl-1 font-mono'>{checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH}</span></span>
+                                {checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH === '' && (<>
+                                    <span>&ldquo; &rdquo;</span>
+                                    <span className='text-blue-600 italic ml-2'>(genesis)</span>
+                                </>)}
+                            </p>
+
+                            <p className='mt-3'>
+                                <span>SPECIAL OPERATIONS: </span>
+                                <JSONPretty id="json-pretty-1" className='mt-3' data={{
+                                    OPERATIONS: checkpointData.OPERATIONS
+                                }} />
+                            </p>
+
+                            <p className='mt-3'>
+                                <span>HIVEMIND DATA: </span>
+                                <JSONPretty id="json-pretty-2" className='mt-3' data={{
+                                    OTHER_SYMBIOTES: checkpointData.OTHER_SYMBIOTES
+                                }} />
+                            </p>
+
+                            <p className='mt-3'>
+                                <span>SUBCHAINS METADATA: </span>
+                                <JSONPretty id="json-pretty-3" className='mt-3' data={{
+                                    SUBCHAINS_METADATA: checkpointData.SUBCHAINS_METADATA
+                                }} />
+                            </p>
+                        </div>
+                    )}
+                </div>}
             </div>
         )}
     </HomeLayout>
