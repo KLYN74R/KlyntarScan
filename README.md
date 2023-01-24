@@ -1,25 +1,35 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="https://c.tenor.com/O6T25ctlsk0AAAAi/alien-dance.gif" widht="800px" height="600px">
 
-## Available Scripts
+</div>
 
-In the project directory, you can run:
 
-### `npm start`
+## <b>How to run</b>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Install dependencies
 
-### `npm run build`
+```code
+npm install
+```
+Create and fill out an env file
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```code
+public/env.js
+```
+Run explorer on localhost
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+```code
+npm run start
+```
+
+Build a production version
+
+
+```code
+npm run build
+```
