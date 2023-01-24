@@ -20,3 +20,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*
+  Scrollbar
+*/
+
+/* width */
+::-webkit-scrollbar {
+  width: 90%;
+  height: 4px;
+  cursor: pointer;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(225, 225, 225, 0.75);
+  border-radius: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(182, 181, 181, 0.75);
+  border-radius: 2px;
+}

@@ -20,7 +20,7 @@ const CheckpointStats: React.FC = () => {
                 setCheckpointData({
                     ...response.data.HEADER,
                     ...response.data.PAYLOAD,
-                    TIMESTAMP: new Date(response.data.TIMESTAMP).toString(),
+                    TIMESTAMP: new Date(response.data.TIMESTAMP).toUTCString(),
                     TX: response.data.TX
                 });
             })
