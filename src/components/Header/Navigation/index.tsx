@@ -32,7 +32,7 @@ const Navigation: React.FC = () => {
       <nav className={cls(styles.navigation, 'md:mt-16 mt-10 md:mb-20 mb-10')}>
 
           <div className='lg:block hidden'>
-              <h2 className='block text-center text-xl text-green-600'>choose a wAy to work</h2>
+              <h2 className='block text-center text-xl'>what do you want to explore<span className='font-mono text-2xl relative top-0.25 left-1 font-normal'>?</span></h2>
               <hr className='mt-8 mb-8'/>
 
               <ul className='flex justify-between items-center'>
@@ -56,7 +56,7 @@ const Navigation: React.FC = () => {
                   className='flex justify-center items-center cursor-pointer'
                   onClick={handleToggleMenu}
               >
-                  <h2 className='block text-center text-xl text-green-600 mr-5'>choose a wAy to work</h2>
+                  <h2 className='block text-center text-lg px-4'>your way to explore</h2>
                   <img
                       src={arrowDown}
                       alt='open'

@@ -5,22 +5,38 @@
 
 .navigation ul li {
     color: #DB0000;
+    cursor: pointer !important;
 }
 
-.activeLink {
-    cursor: default;
-}
-.activeLink::after {
+.navigation ul li a::after {
     content: '';
     display: block;
-    width: 100%;
+    width: 0;
     height: 2px;
     background: red;
     position: relative;
     bottom: 2px;
     left: 0;
     right: 0;
-    cursor: default;
+    cursor: pointer;
+    transition: 0.15s all;
+}
+
+.navigation ul li:hover a::after {
+    width: 100%;
+}
+
+.activeLink::after {
+    content: '';
+    display: block;
+    width: 100% !important;
+    height: 2px;
+    background: red;
+    position: relative;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    cursor: pointer;
 }
 
 .openIcon {

@@ -3,7 +3,9 @@ import styles from './style.module.css';
 
 const Loader: React.FC = () => {
   return (
-      <div className={styles.ldsDualRing}></div>
+      <div className='flex justify-center items-center'>
+        <div className={styles.ldsDualRing}></div>
+      </div>
   );
 };
 

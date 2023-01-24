@@ -10,13 +10,17 @@ import Loader from '../../components/ui/Loader';
 const SymbioteInfo: React.FC = () => {
   const [symbioteData, setSymbioteData] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState<null|string>(null);
 
   useEffect(() => {
       setIsLoading(true);
       (async () => {
           await api.get(ENDPOINTS.SYMBIOTE_INFO)
               .then(response => setSymbioteData(response.data))
-              .catch(e => { throw e })
+              .catch(e => {
+                  setIsError('Connection failed');
+                  throw e;
+              })
               .finally(() => setTimeout(() => setIsLoading(false), 300));
       })();
   }, []);
@@ -27,7 +31,9 @@ const SymbioteInfo: React.FC = () => {
               <Loader/>
           ) : (
               <div>
+                  <h2 className='uppercase tracking-wide mb-8'>current symbiote info</h2>
                   <JSONPretty id="json-pretty" data={symbioteData}></JSONPretty>
+                  {isError && <p className='text-xl text-red-600'>Connection failed.</p>}
               </div>
           )}
       </HomeLayout>
