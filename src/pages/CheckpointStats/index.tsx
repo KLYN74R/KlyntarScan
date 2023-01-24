@@ -110,26 +110,26 @@ const CheckpointStats: React.FC = () => {
                                 </>)}
                             </p>
 
-                            <p className='mt-3'>
+                            <div className='mt-3'>
                                 <span>SPECIAL OPERATIONS: </span>
                                 <JSONPretty id="json-pretty-1" className='mt-3' data={{
                                     OPERATIONS: checkpointData.OPERATIONS
                                 }} />
-                            </p>
+                            </div>
 
-                            <p className='mt-3'>
+                            <div className='mt-3'>
                                 <span>HIVEMIND DATA: </span>
                                 <JSONPretty id="json-pretty-2" className='mt-3' data={{
                                     OTHER_SYMBIOTES: checkpointData.OTHER_SYMBIOTES
                                 }} />
-                            </p>
+                            </div>
 
-                            <p className='mt-3'>
+                            <div className='mt-3'>
                                 <span>SUBCHAINS METADATA: </span>
                                 <JSONPretty id="json-pretty-3" className='mt-3' data={{
                                     SUBCHAINS_METADATA: checkpointData.SUBCHAINS_METADATA
                                 }} />
-                            </p>
+                            </div>
                         </div>
                     )}
                 </div>}
