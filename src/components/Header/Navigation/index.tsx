@@ -4,6 +4,7 @@ import styles from './style.module.css';
 
 import { NavLink } from 'react-router-dom';
 import arrowDown from '../../../assets/img/icons/arrow-down.png';
+import { SearchBar } from '../../index';
 
 const navigation = [
     {
@@ -32,7 +33,10 @@ const Navigation: React.FC = () => {
       <nav className={cls(styles.navigation, 'md:mt-16 mt-10 md:mb-20 mb-10')}>
 
           <div className='lg:block hidden'>
-              <h2 className='block text-center text-xl'>what do you want to explore<span className='font-mono text-2xl relative top-0.25 left-1 font-normal'>?</span></h2>
+              <h2 className='block text-center text-xl mb-16'>what do you want to explore<span className='font-mono text-2xl relative top-0.25 left-1 font-normal'>?</span></h2>
+
+              <SearchBar/>
+
               <hr className='mt-8 mb-8'/>
 
               <ul className='flex justify-between items-center'>
@@ -53,7 +57,7 @@ const Navigation: React.FC = () => {
 
           <div className='lg:hidden block'>
               <div
-                  className='flex justify-center items-center cursor-pointer'
+                  className='flex justify-center items-center cursor-pointer mb-8'
                   onClick={handleToggleMenu}
               >
                   <h2 className='block text-center text-lg px-4'>your way to explore</h2>
@@ -64,6 +68,9 @@ const Navigation: React.FC = () => {
                       className={cls(styles.openIcon, isOpened ? styles.openIconActive : '')}
                   />
               </div>
+
+              <SearchBar isMobile={true} />
+
               <hr className='mt-8'/>
 
               {isOpened && (
