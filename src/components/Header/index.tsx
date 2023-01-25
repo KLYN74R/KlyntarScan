@@ -4,6 +4,7 @@ import styles from './style.module.css';
 
 import { Container } from '../../layouts';
 import Navigation from './Navigation';
+import SocialsWidget from '../SocialsWidget';
 
 const Header: FC = () => {
     return (
@@ -15,6 +16,7 @@ const Header: FC = () => {
                         <span className={cls(styles.version, 'block mt-2')}>v1.3.37</span>
                         <span className={cls(styles.subtitle, 'block mt-8')}>🚀future starts here🚀</span>
                     </div>
+                    <SocialsWidget/>
                 </Container>
             </div>
 

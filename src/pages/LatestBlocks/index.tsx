@@ -70,7 +70,7 @@ const LatestBlocks: React.FC = () => {
                     <span><span className='text-red-600'>Events:</span> <span className='pl-1 font-mono'>{block.events.length}</span></span>
                 </p>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Created at:</span> <span className='pl-1 font-mono'>{moment(block.time).utc().format('hh:mm:ss MM/DD/YYYY')} UTC+0</span></span>
+                    <span><span className='text-red-600'>Created at:</span> <span className='pl-1 font-mono'>{moment(block.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
                 </p>
             </div>,
             icon: 'info',
@@ -86,7 +86,7 @@ const LatestBlocks: React.FC = () => {
                 <Loader/>
             ) : (
                 <div>
-                    <h2 className='uppercase tracking-wide mb-8'>Latest blocks</h2>
+                    <h2 className='uppercase mb-8'>Latest blocks</h2>
 
                     {isError ? <p className='text-xl text-red-600'>Connection failed.</p> : (<>
                         <div className='relative overflow-x-auto bg-slate-50 pb-5'>
@@ -96,7 +96,7 @@ const LatestBlocks: React.FC = () => {
                             >
                                 <thead className="text-red-600 uppercase bg-slate-50 border-b text-center">
                                     <tr>
-                                        <th scope="col" className="px-3 py-4 w-1/12">Real index</th>
+                                        <th scope="col" className="px-3 py-4 w-1/12">Real<br/>index</th>
                                         <th scope="col" className="px-3 py-4 w-1/6">Hash</th>
                                         <th scope="col" className="px-3 py-4 w-1/6">Subchain (pool)</th>
                                         <th scope="col" className="px-0 py-4 w-1/12">Subchain index</th>

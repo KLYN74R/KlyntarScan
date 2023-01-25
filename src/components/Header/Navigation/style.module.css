@@ -3,9 +3,17 @@
     font-weight: bold;
 }
 
+.navigation h2 {
+    letter-spacing: normal;
+}
+
 .navigation ul li {
     color: #DB0000;
     cursor: pointer !important;
+}
+
+.navigation ul li a {
+    letter-spacing: normal;
 }
 
 .navigation ul li a::after {

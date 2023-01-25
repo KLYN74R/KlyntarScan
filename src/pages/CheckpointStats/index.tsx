@@ -38,7 +38,7 @@ const CheckpointStats: React.FC = () => {
             <Loader/>
         ) : (
             <div>
-                <h2 className='uppercase tracking-wide mb-8'>Latest checkpoint stats</h2>
+                <h2 className='uppercase mb-8'>Latest checkpoint stats</h2>
 
                 {isError ? <p className='text-xl text-red-600'>Connection failed.</p> : <div>
                     {checkpointData && (

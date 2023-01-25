@@ -85,7 +85,7 @@ const LatestTransactions: React.FC = () => {
                     <span><span className='text-red-600'>Type:</span> <span className='pl-1 font-mono'>{transaction.type}</span></span>
                 </p>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Created at:</span> <span className='pl-1 font-mono'>{moment(transaction.time).utc().format('hh:mm:ss MM/DD/YYYY')} UTC+0</span></span>
+                    <span><span className='text-red-600'>Created at:</span> <span className='pl-1 font-mono'>{moment(transaction.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
                 </p>
                 <div className='mt-3'>
                     <span><span className='text-red-600'>Payload:</span></span>
@@ -105,9 +105,9 @@ const LatestTransactions: React.FC = () => {
                 <Loader/>
             ) : (
                 <div>
-                    <h2 className='uppercase tracking-wide mb-4'>Latest transactions</h2>
+                    <h2 className='uppercase mb-4'>Latest transactions</h2>
                     {blocks.length > 0 && (
-                        <h2 className='uppercase tracking-wide mb-8 text-red-600'>
+                        <h2 className='uppercase mb-8 text-red-600'>
                             Blocks: <span className='text-black'>{blocks[0].rid} - {blocks[blocks.length - 1].rid}</span>
                         </h2>
                     )}
