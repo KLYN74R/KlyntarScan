@@ -6,6 +6,7 @@ import CheckpointStats from './CheckpointStats';
 import LatestTransactions from './LatestTransactions';
 import LatestBlocks from './LatestBlocks';
 import SymbioteInfo from './SymbioteInfo';
+import EntitySearch from './EntitySearch';
 
 const AppRouter: React.FC = () => {
     return (
@@ -16,6 +17,7 @@ const AppRouter: React.FC = () => {
             <Route path='latest_transaction' element={<LatestTransactions />} />
             <Route path='latest_blocks' element={<LatestBlocks />} />
             <Route path='symbiote_info' element={<SymbioteInfo />} />
+            <Route path='entity_search' element={<EntitySearch />} />
         </Routes>
     );
 };

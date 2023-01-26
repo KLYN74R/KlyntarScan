@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, createSearchParams } from 'react-router-dom';
 import { api } from '../../utils/axios';
 import { ENDPOINTS } from '../../types/endpoints';
+import { ENTITIES } from '../../types/entities';
 import cls from 'classnames';
 import styles from './style.module.css';
 
@@ -11,7 +12,7 @@ type Props = {
 
 const SearchBar: React.FC<Props> = ({ isMobile }) => {
   const [query, setQuery] = useState('');
-  const [entity, setEntity] = useState({});
+  const [entityType, setEntityType] = useState(ENTITIES.EMPTY);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -19,49 +20,37 @@ const SearchBar: React.FC<Props> = ({ isMobile }) => {
 
   const handleChangeQuery = (e: any) => setQuery(e.target.value);
 
-  const handleSubmitSearch = async () => {
-      if (query !== '') {
-          await requestData(query).then(() => {
-              navigate('/entity_search', { state: { entity } });
-          });
-      }
-  }
+  const handleSubmitSearch = async () => query !== '' ? await requestData(query) : undefined;
 
   const requestData = async (query: string) => {
-      setEntity({});
       setIsLoading(true);
       setError('');
+
       try {
-          const responses: any = await Promise.all(
-              [
-                  await api.get(ENDPOINTS.REQUEST_ACCOUNT + `/${query}`),
-                  await api.get(ENDPOINTS.REQUEST_BLOCK_BY_ID + `/${query}`),
-                  await api.get(ENDPOINTS.REQUEST_BLOCK_BY_RID + `/${query}`),
-                  await api.get(ENDPOINTS.REQUEST_EVENT_RECEIPT + `/${query}`),
-                  await api.get(ENDPOINTS.REQUEST_SUPER_FINALIZATION_PROOF + `/${query}`),
-                  await api.get(ENDPOINTS.REQUEST_SUBCHAIN_SKIP_PROOF + `/${query}`),
-              ]
-          );
+          const response = await api.get(ENDPOINTS.GET_SEARCH_RESULT + '/' + query);
+          const data = response.data;
 
-          let found = false;
-          responses.forEach((response: any) => {
-            if (typeof response.data === 'object' && Object.keys(response.data).length > 1) {
-                setEntity(response.data);
-                found = true;
-            }
-            return;
-          });
-
-          if (!found) {
+          if (data.data === ENTITIES.EMPTY) {
               throw new Error('Entity not found for this request.');
           }
-      } catch (e) {
-          setError('Entity not found for this request.')
+
+          setEntityType(data.responseType);
+      } catch (e: any) {
+          setError(e.message);
           throw e;
       } finally {
           setIsLoading(false);
       }
   };
+
+  useEffect(() => {
+      if (entityType !== ENTITIES.EMPTY) {
+          navigate({
+              pathname: '/entity_search',
+              search: `?${createSearchParams({ type: entityType, query })}`
+          });
+      }
+  }, [entityType]);
 
   return (
       <>
