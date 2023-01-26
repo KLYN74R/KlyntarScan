@@ -53,7 +53,6 @@ const CheckpointStats: React.FC = () => {
                             <p className='mt-3'>
                                 <span>PAYLOAD HASH: <span className='pl-1 font-mono'>{checkpointData.PAYLOAD_HASH}</span></span>
                                 {checkpointData.PAYLOAD_HASH === '' && (<>
-                                    <span>&ldquo; &rdquo;</span>
                                     <span className='text-blue-600 italic ml-2'>(genesis)</span>
                                 </>)}
                             </p>
@@ -61,7 +60,6 @@ const CheckpointStats: React.FC = () => {
                             <p className='mt-3'>
                                 <span>AGGREGATED PUBLIC KEY OF QUORUM: <span className='pl-1 font-mono'>{checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY}</span></span>
                                 {checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY === '' && (<>
-                                    <span>&ldquo; &rdquo;</span>
                                     <span className='text-blue-600 italic ml-2'>(genesis)</span>
                                 </>)}
                             </p>
@@ -69,7 +67,6 @@ const CheckpointStats: React.FC = () => {
                             <p className='mt-3'>
                                 <span>AGGREGATED SIGNATURE OF QUORUM: <span className='pl-1 font-mono'>{checkpointData.QUORUM_AGGREGATED_SIGNATURE}</span></span>
                                 {checkpointData.QUORUM_AGGREGATED_SIGNATURE === '' && (<>
-                                    <span>&ldquo; &rdquo;</span>
                                     <span className='text-blue-600 italic ml-2'>(genesis)</span>
                                 </>)}
                             </p>
@@ -105,7 +102,6 @@ const CheckpointStats: React.FC = () => {
                             <p>
                                 <span>PREVIOUS PAYLOAD CHECKPOINT HASH: <span className='pl-1 font-mono'>{checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH}</span></span>
                                 {checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH === '' && (<>
-                                    <span>&ldquo; &rdquo;</span>
                                     <span className='text-blue-600 italic ml-2'>(genesis)</span>
                                 </>)}
                             </p>
