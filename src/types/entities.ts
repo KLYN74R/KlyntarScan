@@ -2,7 +2,7 @@ import { ENDPOINTS } from './endpoints';
 
 export const ENTITIES = {
     EMPTY: 'No data',
-    FROM_STATE: 'FROM_STATE',
+    ROFM_STATE: 'FROM_STATE',
     BLOCK_BY_ID: 'BLOCK_BY_ID',
     BLOCK_BY_RID: 'BLOCK_BY_RID',
     SUPER_FINALIZATION_PROOF: 'SUPER_FINALIZATION_PROOF',
