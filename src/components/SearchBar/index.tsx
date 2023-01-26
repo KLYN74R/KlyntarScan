@@ -6,11 +6,7 @@ import { ENTITIES } from '../../types/entities';
 import cls from 'classnames';
 import styles from './style.module.css';
 
-type Props = {
-    isMobile?: boolean;
-}
-
-const SearchBar: React.FC<Props> = ({ isMobile }) => {
+const SearchBar: React.FC = () => {
   const [query, setQuery] = useState('');
   const [entityType, setEntityType] = useState(ENTITIES.EMPTY);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,6 +15,7 @@ const SearchBar: React.FC<Props> = ({ isMobile }) => {
   const navigate = useNavigate();
 
   const handleChangeQuery = (e: any) => setQuery(e.target.value);
+  const handleEnterInput = (e: any) => e.key === 'Enter' && handleSubmitSearch();
 
   const handleSubmitSearch = async () => query !== '' ? await requestData(query) : undefined;
 
@@ -39,7 +36,7 @@ const SearchBar: React.FC<Props> = ({ isMobile }) => {
           setError(e.message);
           throw e;
       } finally {
-          setIsLoading(false);
+          setTimeout(() => setIsLoading(false), 300);
       }
   };
 
@@ -54,58 +51,29 @@ const SearchBar: React.FC<Props> = ({ isMobile }) => {
 
   return (
       <>
-          {!isMobile ? (
-              <>
-                  <div className={cls(styles.searchBar, ' flex justify-center items-center')}>
-                      <input
-                          type='text'
-                          maxLength={1000}
-                          minLength={1}
-                          placeholder='Find by:    symbioteID   |   blockid   |   RID   |   txid   |   mutationid   |   alias'
-                          onChange={handleChangeQuery}
-                      />
-                      <button
-                          className={styles.cybrBtn}
-                          onClick={handleSubmitSearch}
-                          disabled={isLoading}
-                      >
-                          Find<span aria-hidden>_</span>
-                          <span aria-hidden className={styles.cybrBtn__glitch}>Event</span>
-                          <span aria-hidden className={styles.cybrBtn__tag}>KLY</span>
-                      </button>
-                  </div>
-                  {error !== '' && (
-                      <div className='mt-10 px-20'>
-                          <span className={cls(styles.error, 'text-red-600')}>{error}</span>
-                      </div>
-                  )}
-              </>
-          ) : (
-              <>
-                  <div className={cls(styles.searchBar, styles.searchBarMobile, ' flex flex-col justify-center items-center')}>
-                      <input
-                          type='text'
-                          maxLength={1000}
-                          minLength={1}
-                          placeholder='Find by any entity ID'
-                          onChange={handleChangeQuery}
-                      />
-                      <button
-                          className={styles.cybrBtn}
-                          onClick={handleSubmitSearch}
-                          disabled={isLoading}
-                      >
-                          Find<span aria-hidden>_</span>
-                          <span aria-hidden className={styles.cybrBtn__glitch}>Event</span>
-                          <span aria-hidden className={styles.cybrBtn__tag}>KLY</span>
-                      </button>
-                  </div>
-                  {error !== '' && (
-                      <div className='mt-10'>
-                          <span className={cls(styles.error, 'text-red-600 text-base')}>{error}</span>
-                      </div>
-                  )}
-              </>
+          <div className={cls(styles.searchBar, ' flex flex-row justify-center items-center')}>
+              <input
+                  type='text'
+                  maxLength={1000}
+                  minLength={1}
+                  placeholder={'Find by any ID:    symbioteID   |   blockid   |   RID   |   txid   |   mutationid   |   alias'}
+                  onChange={handleChangeQuery}
+                  onKeyDown={handleEnterInput}
+              />
+              <button
+                  className={styles.cybrBtn}
+                  onClick={handleSubmitSearch}
+                  disabled={isLoading}
+              >
+                  {!isLoading ? 'Find' : 'Wait'}<span aria-hidden>_</span>
+                  <span aria-hidden className={styles.cybrBtn__glitch}>Event</span>
+                  <span aria-hidden className={styles.cybrBtn__tag}>KLY</span>
+              </button>
+          </div>
+          {error !== '' && (
+              <div className={cls(styles.errorWrapper, 'mt-10')}>
+                  <span className={cls(styles.error, 'text-red-600')}>{error}</span>
+              </div>
           )}
       </>
   );

@@ -42,7 +42,7 @@ const CheckpointStats: React.FC = () => {
 
                 {isError ? <p className='text-xl text-red-600'>Connection failed.</p> : <div>
                     {checkpointData && (
-                        <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
+                        <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto md:text-lg text-base'>
                             <h3 className='text-xl text-red-600 italic mb-4'>Header</h3>
 
                             <p>

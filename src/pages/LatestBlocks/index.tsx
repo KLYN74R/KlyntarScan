@@ -7,6 +7,7 @@ import { HomeLayout } from '../../layouts';
 import Loader from '../../components/ui/Loader';
 import LoadMoreBtn from '../../components/ui/LoadMoreBtn';
 import EyeIcon from '../../assets/img/icons/eye.png';
+import JSONPretty from 'react-json-pretty';
 
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -53,10 +54,17 @@ const LatestBlocks: React.FC = () => {
 
     const lastBlockShowed = blocks.length > 0 && blocks[blocks.length - 1].rid === 0;
 
+    const showEventsDetails = (e: any) => {
+        const btn = e.target;
+        const div = btn.parentNode;
+        div.querySelector('div').classList.toggle('hidden');
+        btn.textContent = 'close';
+    }
+
     const openBlockDetails = (block: any) => {
         MySwal.fire({
-            title: <strong>Block #{block.rid}</strong>,
-            html: <div className='text-left text-black text-lg'>
+            title: <strong className='md:text-2xl text-xl'>Block #{block.rid}</strong>,
+            html: <div className='text-left text-black md:text-lg text-base'>
                 <p className='mt-3'>
                     <span><span className='text-red-600'>Hash:</span> <span className='pl-1 font-mono'>{block.hash}</span></span>
                 </p>
@@ -66,9 +74,18 @@ const LatestBlocks: React.FC = () => {
                 <p className='mt-3'>
                     <span><span className='text-red-600'>Subchain index:</span> <span className='pl-1 font-mono'>{block.index}</span></span>
                 </p>
-                <p className='mt-3'>
+                <div className='mt-3'>
                     <span><span className='text-red-600'>Events:</span> <span className='pl-1 font-mono'>{block.events.length}</span></span>
-                </p>
+                    {block.events.length > 0 && (<>
+                       <span
+                           onClick={showEventsDetails}
+                           className='inline-block ml-3 underline cursor-pointer'
+                       >open</span>
+                        <div className='mt-1 hidden'>
+                            <JSONPretty id='json-pretty' data={block.events}/>
+                        </div>
+                    </>)}
+                </div>
                 <p className='mt-3'>
                     <span><span className='text-red-600'>Created at:</span> <span className='pl-1 font-mono'>{moment(block.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
                 </p>

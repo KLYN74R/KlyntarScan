@@ -5,6 +5,7 @@ import styles from './style.module.css';
 import { Container } from '../../layouts';
 import Navigation from './Navigation';
 import SocialsWidget from '../SocialsWidget';
+import { SearchBar } from '../index';
 
 const Header: FC = () => {
     return (
@@ -21,7 +22,9 @@ const Header: FC = () => {
             </div>
 
             <Container>
-                <Navigation/>
+                <Navigation>
+                    <SearchBar/>
+                </Navigation>
             </Container>
         </header>
     );

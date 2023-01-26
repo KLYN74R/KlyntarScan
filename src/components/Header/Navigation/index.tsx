@@ -4,7 +4,6 @@ import styles from './style.module.css';
 
 import { NavLink } from 'react-router-dom';
 import arrowDown from '../../../assets/img/icons/arrow-down.png';
-import { SearchBar } from '../../index';
 
 const navigation = [
     {
@@ -25,7 +24,11 @@ const navigation = [
     },
 ];
 
-const Navigation: React.FC = () => {
+type Props = {
+    children: React.ReactNode;
+};
+
+const Navigation: React.FC<Props> = ({ children }) => {
     const [isOpened, setIsOpened] = useState(false);
     const handleToggleMenu = () => setIsOpened(isOpened => !isOpened);
 
@@ -34,9 +37,9 @@ const Navigation: React.FC = () => {
 
           <div className='lg:block hidden'>
               <h2 className='block text-center text-xl mb-16'>what do you want to explore<span className='font-mono text-2xl relative top-0.25 left-1 font-normal'>?</span></h2>
-
-              <SearchBar/>
-
+          </div>
+              {children}
+          <div className='lg:block hidden'>
               <hr className='mt-8 mb-8'/>
 
               <ul className='flex justify-between items-center'>
@@ -69,12 +72,10 @@ const Navigation: React.FC = () => {
                   />
               </div>
 
-              <SearchBar isMobile={true} />
-
               <hr className='mt-8'/>
 
-              {isOpened && (
-                  <ul className='flex flex-col items-center mt-8'>
+              {isOpened && (<>
+                  <ul className='flex flex-col items-center mt-8 mb-1'>
                       {navigation.map((item, idx) => (
                           <li key={idx} className='mb-8'>
                               <NavLink
@@ -87,7 +88,8 @@ const Navigation: React.FC = () => {
                           </li>
                       ))}
                   </ul>
-              )}
+                  <hr/>
+              </>)}
           </div>
 
       </nav>

@@ -8,11 +8,6 @@
     margin-right: 5px;
 }
 
-.searchBarMobile input {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
 .cybrBtn {
     --primary: hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 1%));
     --shadow-primary: hsl(var(--shadow-primary-hue), 90%, 50%);
@@ -49,12 +44,6 @@
     height: 75px;
     line-height: 75px;
     transition: background 0.2s;
-}
-
-.searchBarMobile .cybrBtn {
-    min-width: 250px;
-    height: 60px;
-    line-height: 60px;
 }
 
 .cybrBtn:hover {
@@ -191,7 +180,35 @@
     --primary-hue: 260;
 }
 
+.errorWrapper {
+    padding: 0 75px;
+}
+
 .error {
     font-family: 'Orbitron';
     font-weight: 400;
+}
+
+@media screen and (max-width: 1040px) {
+    .searchBar {
+        flex-direction: column;
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+    .searchBar input {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .searchBar .cybrBtn {
+        min-width: 250px;
+        height: 60px;
+        line-height: 60px;
+    }
+    .errorWrapper {
+        padding: 0;
+        margin-bottom: 45px;
+    }
+    .error {
+        font-size: 16px;
+    }
 }

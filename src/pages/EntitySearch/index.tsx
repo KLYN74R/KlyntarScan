@@ -55,7 +55,7 @@ const EntitySearch: React.FC = () => {
                   <h2 className='uppercase mb-8'>Latest blocks</h2>
 
                   {error !== '' ? <p className='text-xl text-red-600'>{error}</p> : (<>
-                     <div>
+                     <div className='md:text-lg text-base'>
                          <JSONPretty id="json-pretty" data={entity} />
                      </div>
                   </>)}

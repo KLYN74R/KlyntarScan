@@ -76,8 +76,8 @@ const LatestTransactions: React.FC = () => {
 
     const openTransactionDetails = (transaction: any) => {
         MySwal.fire({
-            title: <strong>Transaction<br/>in Block #{transaction.rid}</strong>,
-            html: <div className='text-left text-black text-lg'>
+            title: <strong className='md:text-2xl text-xl'>Transaction<br/>in Block #{transaction.rid}</strong>,
+            html: <div className='text-left text-black md:text-lg text-base'>
                 <p className='mt-3'>
                     <span><span className='text-red-600'>Creator:</span> <span className='pl-1 font-mono'>{transaction.creator}</span></span>
                 </p>
