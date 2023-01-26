@@ -1,43 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams  } from 'react-router-dom';
 import { api } from '../../utils/axios';
-import { emptyResponse } from '../../types/endpoints';
+import { ENDPOINTS } from '../../types/endpoints';
+import { ENTITIES } from '../../types/entities';
+import moment from 'moment/moment';
 
 import { HomeLayout } from '../../layouts';
-import { ENTITIES, getEndpointByEntityType } from '../../types/entities';
 import Loader from '../../components/ui/Loader';
 import JSONPretty from 'react-json-pretty';
 
 const EntitySearch: React.FC = () => {
   const [searchParams] = useSearchParams();
+  const [responseType, setResponseType] = useState(ENTITIES.EMPTY);
   const [entityContent, setEntityContent] = useState(<div>No data.</div>);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const responseType = searchParams.get('type') || '';
   const query = searchParams.get('query') || '';
 
   useEffect(() => {
       (async () => {
-          const endpoint = getEndpointByEntityType(responseType);
-          await requestEntity(endpoint);
+          await requestEntity();
       })();
-  }, [responseType, query]);
+  }, [query]);
 
-  const requestEntity = async (endpoint: string) => {
+  const requestEntity = async () => {
     setIsLoading(true);
     setError('');
     setEntityContent(<div>No data.</div>);
 
     try {
-        const response = await api.get(endpoint + '/' + getQueryParam(responseType, query));
-
+        const response = await api.get(ENDPOINTS.GET_SEARCH_RESULT + '/' + query);
         const data = response.data;
-        if (emptyResponse.includes(data) || emptyResponse.includes(data.error)) {
+
+        if (data.data === ENTITIES.EMPTY) {
             throw new Error('Entity not found for this request.');
         }
 
-        setEntityContent(generateContent(responseType, data));
+        setResponseType(data.responseType);
+        setEntityContent(generateContent(data.responseType, data.data));
     } catch (e: any) {
         setError(e.message);
         throw e;
@@ -45,21 +46,6 @@ const EntitySearch: React.FC = () => {
         setTimeout(() => setIsLoading(false), 300);
     }
   };
-
-  const getQueryParam = (responseType: string, initial: string) => {
-      let queryParam;
-
-      switch (responseType) {
-          case ENTITIES.BLOCK_BY_RID:
-              queryParam = initial.split(':')[1];
-              break;
-          default:
-              queryParam = initial;
-              break;
-      }
-
-      return queryParam;
-  }
 
   const generateContent = (responseType: string, entity: any) => {
     let content;
@@ -79,6 +65,34 @@ const EntitySearch: React.FC = () => {
                     </p>
                 </div>
             break;
+        case ENTITIES.BLOCK_BY_ID:
+            content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
+                <h3 className='text-xl text-red-600 italic mb-4'>DATA</h3>
+                <p>
+                    <span>Index: <span className='pl-1 font-mono text-xl'>{entity.index}</span></span>
+                </p>
+                <p className='mt-3'>
+                    <span>Creator: <span className='pl-1 font-mono'>{entity.creator}</span></span>
+                </p>
+                <p className='mt-3'>
+                    <span>PrevHash: <span className='pl-1 font-mono'>{entity.prevHash}</span></span>
+                </p>
+                <p className='mt-3'>
+                    <span>Signature: <span className='pl-1 font-mono'>{entity.sig}</span></span>
+                </p>
+                <p className='mt-3'>
+                    <span>Created at: <span className='pl-1 font-mono'>{moment(entity.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
+                </p>
+                <div className='mt-3'>
+                    <span><span>Events:</span> <span className='pl-1 font-mono'>{entity.events.length}</span></span>
+                    {entity.events.length > 0 && (<>
+                        <div className='mt-1'>
+                            <JSONPretty id='json-pretty' data={entity.events}/>
+                        </div>
+                    </>)}
+                </div>
+            </div>
+            break;
         case ENTITIES.BLOCK_BY_RID:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
                 <h3 className='text-xl text-red-600 italic mb-4'>DATA</h3>
@@ -92,13 +106,69 @@ const EntitySearch: React.FC = () => {
                     <span>PrevHash: <span className='pl-1 font-mono'>{entity.prevHash}</span></span>
                 </p>
                 <p className='mt-3'>
-                    <span>Sig: <span className='pl-1 font-mono'>{entity.sig}</span></span>
+                    <span>Signature: <span className='pl-1 font-mono'>{entity.sig}</span></span>
+                </p>
+                <p className='mt-3'>
+                    <span>Created at: <span className='pl-1 font-mono'>{moment(entity.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
                 </p>
                 <div className='mt-3'>
                     <span><span>Events:</span> <span className='pl-1 font-mono'>{entity.events.length}</span></span>
                     {entity.events.length > 0 && (<>
                         <div className='mt-1'>
                             <JSONPretty id='json-pretty' data={entity.events}/>
+                        </div>
+                    </>)}
+                </div>
+            </div>
+            break;
+        case ENTITIES.SUPER_FINALIZATION_PROOF:
+            content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
+                <h3 className='text-xl text-red-600 italic mb-4'>DATA</h3>
+                <p>
+                    <span>Block ID: <span className='pl-1 font-mono text-xl'>{entity.blockID}</span></span>
+                </p>
+                <p className='mt-3'>
+                    <span>Block Hash: <span className='pl-1 font-mono'>{entity.blockHash}</span></span>
+                </p>
+                <p className='mt-3'>
+                    <span>Aggregated Pub: <span className='pl-1 font-mono'>{entity.aggregatedPub}</span></span>
+                </p>
+                <p className='mt-3'>
+                    <span>Aggregated Signature: <span className='pl-1 font-mono'>{entity.aggregatedSignature}</span></span>
+                </p>
+                <div className='mt-3'>
+                    <span><span>AFK Validators:</span> <span className='pl-1 font-mono'>{entity.afkValidators.length}</span></span>
+                    {entity.afkValidators.length > 0 && (<>
+                        <div className='mt-1'>
+                            <JSONPretty id='json-pretty' data={entity.afkValidators}/>
+                        </div>
+                    </>)}
+                </div>
+            </div>
+            break;
+        case ENTITIES.SKIP_STAGE_3:
+            content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
+                <h3 className='text-xl text-red-600 italic mb-4'>DATA</h3>
+                <p>
+                    <span>Index: <span className='pl-1 font-mono text-xl'>{entity.index}</span></span>
+                </p>
+                <p className='mt-3'>
+                    <span>Hash: <span className='pl-1 font-mono'>{entity.hash}</span></span>
+                </p>
+                <p className='mt-3'>
+                    <span>Subchain: <span className='pl-1 font-mono'>{entity.subchain}</span></span>
+                </p>
+                <p className='mt-3'>
+                    <span>Aggregated Pub: <span className='pl-1 font-mono'>{entity.aggregatedPub}</span></span>
+                </p>
+                <p className='mt-3'>
+                    <span>Aggregated Signature: <span className='pl-1 font-mono'>{entity.aggregatedSignature}</span></span>
+                </p>
+                <div className='mt-3'>
+                    <span><span>AFK Validators:</span> <span className='pl-1 font-mono'>{entity.afkValidators.length}</span></span>
+                    {entity.afkValidators.length > 0 && (<>
+                        <div className='mt-1'>
+                            <JSONPretty id='json-pretty' data={entity.afkValidators}/>
                         </div>
                     </>)}
                 </div>
@@ -123,7 +193,7 @@ const EntitySearch: React.FC = () => {
               <div>
                   <h2 className='uppercase mb-8'>{responseType.replaceAll('_', ' ')}</h2>
 
-                  {error !== '' ? <p className='text-xl text-red-600'>{error}</p> : (<>
+                  {error !== '' ? <p className='text-red-600'>{error}</p> : (<>
                      <div className='md:text-lg text-base'>
                          {entityContent}
                      </div>
