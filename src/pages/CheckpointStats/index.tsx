@@ -46,28 +46,28 @@ const CheckpointStats: React.FC = () => {
                             <h3 className='text-base text-red-600 italic uppercase mb-4'>Header</h3>
 
                             <p>
-                                <span>INDEX: <span className='pl-1 font-mono text-lg font-bold'>{checkpointData.ID}</span></span>
+                                <span>Index: <span className='pl-1 font-mono font-bold'>{checkpointData.ID}</span></span>
                                 {/*{checkpointData.ID === -1 && (<span className='text-blue-600 italic ml-2'>(genesis)</span>)}*/}
                             </p>
 
                             <p className='mt-3'>
-                                <span>PAYLOAD HASH: <span className='pl-1 font-mono text-lg text-lg'>{checkpointData.PAYLOAD_HASH}</span></span>
+                                <span>Payload hash: <span className='pl-1 font-mono text-lg'>{checkpointData.PAYLOAD_HASH}</span></span>
                                 {checkpointData.PAYLOAD_HASH === '' && (<>
                                     <span className='text-blue-600 italic'>(genesis)</span>
                                 </>)}
                             </p>
 
                             <p className='mt-3'>
-                                <span>AFK SIGNERS: </span>
+                                <span>AFK Signers: </span>
                                 {checkpointData.AFK_VALIDATORS.length === 0 ? (<>
-                                    <span className='font-mono text-lg text-lg'>[]</span>
+                                    <span className='font-mono text-lg'>[]</span>
                                     <span className='text-blue-600 italic ml-2'>(genesis)</span>
                                 </>) : (
                                     <div>
                                         [
                                         <ul>
                                             {checkpointData.AFK_VALIDATORS.map((validator: string, idx: number) => (
-                                                <li key={idx} className='font-mono text-lg ml-3 mt-2 first:mt-0'>{validator}</li>
+                                                <li key={idx} className='font-mono ml-3 mt-2 first:mt-0'>{validator}</li>
                                             ))}
                                         </ul>
                                         ]
@@ -76,11 +76,11 @@ const CheckpointStats: React.FC = () => {
                             </p>
 
                             <p className='mt-3'>
-                                <span>PUBLISHED AT: <span className='pl-1 font-mono text-lg'>{checkpointData.TIMESTAMP}</span></span>
+                                <span>Published at: <span className='pl-1 font-mono'>{checkpointData.TIMESTAMP}</span></span>
                             </p>
 
                             <p className='mt-3'>
-                                <span>VIA TX: <span className='pl-1 font-mono text-lg'>{checkpointData.TX}</span></span>
+                                <span>Via TX: <span className='pl-1 font-mono'>{checkpointData.TX}</span></span>
                             </p>
 
                             <p className='mt-3'>
@@ -88,14 +88,14 @@ const CheckpointStats: React.FC = () => {
                             </p>
 
                             <p className='mt-3'>
-                                <span>PUBLIC KEY: <span className='pl-1 font-mono text-lg'>{checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY}</span></span>
+                                <span>Public key: <span className='pl-1 font-mono'>{checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY}</span></span>
                                 {checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY === '' && (<>
                                     <span className='text-blue-600 italic'>(genesis)</span>
                                 </>)}
                             </p>
 
                             <p className='mt-3'>
-                                <span>SIGNATURE: <span className='pl-1 font-mono text-lg'>{checkpointData.QUORUM_AGGREGATED_SIGNATURE}</span></span>
+                                <span>Signature: <span className='pl-1 font-mono'>{checkpointData.QUORUM_AGGREGATED_SIGNATURE}</span></span>
                                 {checkpointData.QUORUM_AGGREGATED_SIGNATURE === '' && (<>
                                     <span className='text-blue-600 italic'>(genesis)</span>
                                 </>)}
@@ -104,28 +104,28 @@ const CheckpointStats: React.FC = () => {
                             <h3 className='text-base text-red-600 uppercase italic mt-8 mb-4 '>Payload info</h3>
 
                             <p>
-                                <span>PREVIOUS PAYLOAD CHECKPOINT HASH: <span className='pl-1 font-mono text-lg'>{checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH}</span></span>
+                                <span>Previous payload checkpoint hash: <span className='pl-1 font-mono'>{checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH}</span></span>
                                 {checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH === '' && (<>
-                                    <span className='text-blue-600 italic ml-2'>(genesis)</span>
+                                    <span className='text-blue-600 italic'>(genesis)</span>
                                 </>)}
                             </p>
 
                             <div className='mt-3'>
-                                <span>SPECIAL OPERATIONS: </span>
+                                <span>Special operations: </span>
                                 <JSONPretty id="json-pretty-1" className='mt-3' data={{
                                     OPERATIONS: checkpointData.OPERATIONS
                                 }} />
                             </div>
 
                             <div className='mt-3'>
-                                <span>HIVEMIND DATA: </span>
+                                <span>Hivemind data: </span>
                                 <JSONPretty id="json-pretty-2" className='mt-3' data={{
                                     OTHER_SYMBIOTES: checkpointData.OTHER_SYMBIOTES
                                 }} />
                             </div>
 
                             <div className='mt-3'>
-                                <span>SUBCHAINS METADATA: </span>
+                                <span>Subchains metadata </span>
                                 <JSONPretty id="json-pretty-3" className='mt-3' data={{
                                     SUBCHAINS_METADATA: checkpointData.SUBCHAINS_METADATA
                                 }} />

@@ -66,16 +66,16 @@ const LatestBlocks: React.FC = () => {
             title: <strong className='text-xl'>Block #{block.rid}</strong>,
             html: <div className='text-left text-black text-base'>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Hash:</span> <span className='pl-1 font-mono text-lg'>{block.hash}</span></span>
+                    <span><span className='text-red-600'>Hash:</span> <span className='pl-1 font-mono'>{block.hash}</span></span>
                 </p>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Subchain (pool):</span> <span className='pl-1 font-mono text-lg'>{block.creator}</span></span>
+                    <span><span className='text-red-600'>Subchain (pool):</span> <span className='pl-1 font-mono'>{block.creator}</span></span>
                 </p>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Subchain index:</span> <span className='pl-1 font-mono text-lg'>{block.index}</span></span>
+                    <span><span className='text-red-600'>Subchain index:</span> <span className='pl-1 font-mono'>{block.index}</span></span>
                 </p>
                 <div className='mt-3'>
-                    <span><span className='text-red-600'>Events:</span> <span className='pl-1 font-mono text-lg'>{block.events.length}</span></span>
+                    <span><span className='text-red-600'>Events:</span> <span className='pl-1 font-mono'>{block.events.length}</span></span>
                     {block.events.length > 0 && (<>
                        <span
                            onClick={showEventsDetails}
@@ -87,7 +87,7 @@ const LatestBlocks: React.FC = () => {
                     </>)}
                 </div>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Published at:</span> <span className='pl-1 font-mono text-lg'>{moment(block.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
+                    <span><span className='text-red-600'>Published at:</span> <span className='pl-1 font-mono'>{moment(block.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
                 </p>
             </div>,
             icon: 'info',
