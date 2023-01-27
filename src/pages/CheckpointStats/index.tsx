@@ -53,21 +53,7 @@ const CheckpointStats: React.FC = () => {
                             <p className='mt-3'>
                                 <span>PAYLOAD HASH: <span className='pl-1 font-mono'>{checkpointData.PAYLOAD_HASH}</span></span>
                                 {checkpointData.PAYLOAD_HASH === '' && (<>
-                                    <span className='text-blue-600 italic ml-2'>(genesis)</span>
-                                </>)}
-                            </p>
-
-                            <p className='mt-3'>
-                                <span>AGGREGATED PUBLIC KEY OF QUORUM: <span className='pl-1 font-mono'>{checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY}</span></span>
-                                {checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY === '' && (<>
-                                    <span className='text-blue-600 italic ml-2'>(genesis)</span>
-                                </>)}
-                            </p>
-
-                            <p className='mt-3'>
-                                <span>AGGREGATED SIGNATURE OF QUORUM: <span className='pl-1 font-mono'>{checkpointData.QUORUM_AGGREGATED_SIGNATURE}</span></span>
-                                {checkpointData.QUORUM_AGGREGATED_SIGNATURE === '' && (<>
-                                    <span className='text-blue-600 italic ml-2'>(genesis)</span>
+                                    <span className='text-blue-600 italic'>(genesis)</span>
                                 </>)}
                             </p>
 
@@ -95,6 +81,24 @@ const CheckpointStats: React.FC = () => {
 
                             <p className='mt-3'>
                                 <span>VIA TX: <span className='pl-1 font-mono'>{checkpointData.TX}</span></span>
+                            </p>
+
+                            <p className='mt-3'>
+                                <span className='italic text-blue-600'>AGGREGATED DATA OF QUORUM</span>
+                            </p>
+
+                            <p className='mt-3'>
+                                <span>PUBLIC KEY: <span className='pl-1 font-mono'>{checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY}</span></span>
+                                {checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY === '' && (<>
+                                    <span className='text-blue-600 italic'>(genesis)</span>
+                                </>)}
+                            </p>
+
+                            <p className='mt-3'>
+                                <span>SIGNATURE: <span className='pl-1 font-mono'>{checkpointData.QUORUM_AGGREGATED_SIGNATURE}</span></span>
+                                {checkpointData.QUORUM_AGGREGATED_SIGNATURE === '' && (<>
+                                    <span className='text-blue-600 italic'>(genesis)</span>
+                                </>)}
                             </p>
 
                             <h3 className='text-xl text-red-600 italic mt-8 mb-4'>Payload info</h3>
