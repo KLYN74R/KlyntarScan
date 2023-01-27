@@ -76,16 +76,16 @@ const LatestTransactions: React.FC = () => {
 
     const openTransactionDetails = (transaction: any) => {
         MySwal.fire({
-            title: <strong className='md:text-2xl text-xl'>Transaction<br/>in Block #{transaction.rid}</strong>,
-            html: <div className='text-left text-black md:text-lg text-base'>
+            title: <strong className='text-xl leading-normal'>Transaction<br/>in Block #{transaction.rid}</strong>,
+            html: <div className='text-left text-black text-base'>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Creator:</span> <span className='pl-1 font-mono'>{transaction.creator}</span></span>
+                    <span><span className='text-red-600'>Creator:</span> <span className='pl-1 font-mono text-lg'>{transaction.creator}</span></span>
                 </p>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Type:</span> <span className='pl-1 font-mono'>{transaction.type}</span></span>
+                    <span><span className='text-red-600'>Type:</span> <span className='pl-1 font-mono text-lg'>{transaction.type}</span></span>
                 </p>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Created at:</span> <span className='pl-1 font-mono'>{moment(transaction.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
+                    <span><span className='text-red-600'>Published at:</span> <span className='pl-1 font-mono text-lg'>{moment(transaction.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
                 </p>
                 <div className='mt-3'>
                     <span><span className='text-red-600'>Payload:</span></span>
@@ -112,7 +112,7 @@ const LatestTransactions: React.FC = () => {
                         </h2>
                     )}
 
-                    {isError ? <p className='text-xl text-red-600'>Connection failed.</p> : (<>
+                    {isError ? <p className='text-base text-red-600'>Connection failed.</p> : (<>
                         <div className='relative overflow-x-auto bg-slate-50 pb-5'>
                             <table
                                 className="table-fixed w-full text-sm text-left"

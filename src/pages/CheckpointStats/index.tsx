@@ -38,20 +38,20 @@ const CheckpointStats: React.FC = () => {
             <Loader/>
         ) : (
             <div>
-                <h2 className='uppercase mb-8'>Latest checkpoint stats</h2>
+                <h2 className='uppercase text-base mb-8'>Latest checkpoint stats</h2>
 
-                {isError ? <p className='text-xl text-red-600'>Connection failed.</p> : <div>
+                {isError ? <p className='text-base text-red-600'>Connection failed.</p> : <div>
                     {checkpointData && (
-                        <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto md:text-lg text-base'>
-                            <h3 className='text-xl text-red-600 italic mb-4'>Header</h3>
+                        <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto text-base'>
+                            <h3 className='text-base text-red-600 italic uppercase mb-4'>Header</h3>
 
                             <p>
-                                <span>INDEX: <span className='pl-1 font-mono text-xl'>{checkpointData.ID}</span></span>
+                                <span>INDEX: <span className='pl-1 font-mono text-lg font-bold'>{checkpointData.ID}</span></span>
                                 {/*{checkpointData.ID === -1 && (<span className='text-blue-600 italic ml-2'>(genesis)</span>)}*/}
                             </p>
 
                             <p className='mt-3'>
-                                <span>PAYLOAD HASH: <span className='pl-1 font-mono'>{checkpointData.PAYLOAD_HASH}</span></span>
+                                <span>PAYLOAD HASH: <span className='pl-1 font-mono text-lg text-lg'>{checkpointData.PAYLOAD_HASH}</span></span>
                                 {checkpointData.PAYLOAD_HASH === '' && (<>
                                     <span className='text-blue-600 italic'>(genesis)</span>
                                 </>)}
@@ -60,14 +60,14 @@ const CheckpointStats: React.FC = () => {
                             <p className='mt-3'>
                                 <span>AFK SIGNERS: </span>
                                 {checkpointData.AFK_VALIDATORS.length === 0 ? (<>
-                                    <span className='font-mono'>[]</span>
+                                    <span className='font-mono text-lg text-lg'>[]</span>
                                     <span className='text-blue-600 italic ml-2'>(genesis)</span>
                                 </>) : (
                                     <div>
                                         [
                                         <ul>
                                             {checkpointData.AFK_VALIDATORS.map((validator: string, idx: number) => (
-                                                <li key={idx} className='font-mono ml-3 mt-2 first:mt-0'>{validator}</li>
+                                                <li key={idx} className='font-mono text-lg ml-3 mt-2 first:mt-0'>{validator}</li>
                                             ))}
                                         </ul>
                                         ]
@@ -76,11 +76,11 @@ const CheckpointStats: React.FC = () => {
                             </p>
 
                             <p className='mt-3'>
-                                <span>PUBLISHED AT: <span className='pl-1 font-mono'>{checkpointData.TIMESTAMP}</span></span>
+                                <span>PUBLISHED AT: <span className='pl-1 font-mono text-lg'>{checkpointData.TIMESTAMP}</span></span>
                             </p>
 
                             <p className='mt-3'>
-                                <span>VIA TX: <span className='pl-1 font-mono'>{checkpointData.TX}</span></span>
+                                <span>VIA TX: <span className='pl-1 font-mono text-lg'>{checkpointData.TX}</span></span>
                             </p>
 
                             <p className='mt-3'>
@@ -88,23 +88,23 @@ const CheckpointStats: React.FC = () => {
                             </p>
 
                             <p className='mt-3'>
-                                <span>PUBLIC KEY: <span className='pl-1 font-mono'>{checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY}</span></span>
+                                <span>PUBLIC KEY: <span className='pl-1 font-mono text-lg'>{checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY}</span></span>
                                 {checkpointData.QUORUM_AGGREGATED_SIGNERS_PUBKEY === '' && (<>
                                     <span className='text-blue-600 italic'>(genesis)</span>
                                 </>)}
                             </p>
 
                             <p className='mt-3'>
-                                <span>SIGNATURE: <span className='pl-1 font-mono'>{checkpointData.QUORUM_AGGREGATED_SIGNATURE}</span></span>
+                                <span>SIGNATURE: <span className='pl-1 font-mono text-lg'>{checkpointData.QUORUM_AGGREGATED_SIGNATURE}</span></span>
                                 {checkpointData.QUORUM_AGGREGATED_SIGNATURE === '' && (<>
                                     <span className='text-blue-600 italic'>(genesis)</span>
                                 </>)}
                             </p>
 
-                            <h3 className='text-xl text-red-600 italic mt-8 mb-4'>Payload info</h3>
+                            <h3 className='text-base text-red-600 uppercase italic mt-8 mb-4 '>Payload info</h3>
 
                             <p>
-                                <span>PREVIOUS PAYLOAD CHECKPOINT HASH: <span className='pl-1 font-mono'>{checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH}</span></span>
+                                <span>PREVIOUS PAYLOAD CHECKPOINT HASH: <span className='pl-1 font-mono text-lg'>{checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH}</span></span>
                                 {checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH === '' && (<>
                                     <span className='text-blue-600 italic ml-2'>(genesis)</span>
                                 </>)}

@@ -32,7 +32,7 @@ const SymbioteInfo: React.FC = () => {
           ) : (
               <div>
                   <h2 className='uppercase mb-8'>current symbiote info</h2>
-                  <div className='md:text-lg text-base'>
+                  <div className='text-base'>
                       <JSONPretty id="json-pretty" data={symbioteData} />
                       {isError && <p className='text-xl text-red-600'>Connection failed.</p>}
                   </div>

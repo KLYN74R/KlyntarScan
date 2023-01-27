@@ -15,10 +15,10 @@ const icons = {
 
 const SocialsWidget: React.FC = () => {
   return (
-      <div className='mt-10'>
+      <div className='mt-8'>
           <ul className='flex items-center justify-center'>
               {Object.keys(config.socials).map((item, idx) => (
-                  <li key={idx} className='first:ml-0 ml-6'>
+                  <li key={idx} className='first:ml-0 ml-5'>
                       <a href={config.socials[item as keyof typeof config.socials]} target='_blank' rel='noreferrer'>
                           <img
                               src={icons[item as keyof typeof icons]}

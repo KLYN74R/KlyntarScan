@@ -2,7 +2,6 @@
     border: 1px solid rgba(164, 164, 164, 0.5);
     font-family: 'Orbitron';
     font-weight: 400;
-    font-size: 16px;
     padding: 2px 5px;
     width: 60%;
     margin-right: 5px;
@@ -40,9 +39,9 @@
     position: relative;
     font-weight: 700;
     border: 0;
-    min-width: 300px;
-    height: 75px;
-    line-height: 75px;
+    min-width: 280px;
+    height: 70px;
+    line-height: 70px;
     transition: background 0.2s;
 }
 
