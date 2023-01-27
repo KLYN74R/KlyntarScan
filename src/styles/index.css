@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  zoom: 0.8;
+}
+
 body {
   margin: 0;
   font-family: Orbitron, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
