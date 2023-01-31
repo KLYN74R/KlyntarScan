@@ -53,9 +53,9 @@ const EntitySearch: React.FC = () => {
     switch (responseType) {
         case ENTITIES.EVENT_RECEIPT:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
-                    <h3 className='text-xl text-red-600 italic mb-4'>DATA</h3>
+                    <h3 className='text-red-600 italic mb-4'>DATA</h3>
                     <p>
-                        <span>ID: <span className='pl-1 font-mono text-xl'>{entity.id}</span></span>
+                        <span>ID: <span className='font-mono font-bold'>{entity.id}</span></span>
                     </p>
                     <p className='mt-3'>
                         <span>Block ID: <span className='pl-1 font-mono'>{entity.blockID}</span></span>
@@ -67,9 +67,9 @@ const EntitySearch: React.FC = () => {
             break;
         case ENTITIES.BLOCK_BY_ID:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
-                <h3 className='text-xl text-red-600 italic mb-4'>DATA</h3>
+                <h3 className='text-red-600 italic mb-4'>DATA</h3>
                 <p>
-                    <span>Index: <span className='pl-1 font-mono text-xl'>{entity.index}</span></span>
+                    <span>Index: <span className='font-mono font-bold'>{entity.index}</span></span>
                 </p>
                 <p className='mt-3'>
                     <span>Creator: <span className='pl-1 font-mono'>{entity.creator}</span></span>
@@ -81,7 +81,7 @@ const EntitySearch: React.FC = () => {
                     <span>Signature: <span className='pl-1 font-mono'>{entity.sig}</span></span>
                 </p>
                 <p className='mt-3'>
-                    <span>Created at: <span className='pl-1 font-mono'>{moment(entity.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
+                    <span>Published at: <span className='pl-1 font-mono'>{moment(entity.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
                 </p>
                 <div className='mt-3'>
                     <span><span>Events:</span> <span className='pl-1 font-mono'>{entity.events.length}</span></span>
@@ -95,9 +95,9 @@ const EntitySearch: React.FC = () => {
             break;
         case ENTITIES.BLOCK_BY_RID:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
-                <h3 className='text-xl text-red-600 italic mb-4'>DATA</h3>
+                <h3 className='text-red-600 italic mb-4'>DATA</h3>
                 <p>
-                    <span>Index: <span className='pl-1 font-mono text-xl'>{entity.index}</span></span>
+                    <span>Index: <span className='font-mono font-bold'>{entity.index}</span></span>
                 </p>
                 <p className='mt-3'>
                     <span>Creator: <span className='pl-1 font-mono'>{entity.creator}</span></span>
@@ -109,7 +109,7 @@ const EntitySearch: React.FC = () => {
                     <span>Signature: <span className='pl-1 font-mono'>{entity.sig}</span></span>
                 </p>
                 <p className='mt-3'>
-                    <span>Created at: <span className='pl-1 font-mono'>{moment(entity.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
+                    <span>Published at: <span className='pl-1 font-mono'>{moment(entity.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
                 </p>
                 <div className='mt-3'>
                     <span><span>Events:</span> <span className='pl-1 font-mono'>{entity.events.length}</span></span>
@@ -123,9 +123,9 @@ const EntitySearch: React.FC = () => {
             break;
         case ENTITIES.SUPER_FINALIZATION_PROOF:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
-                <h3 className='text-xl text-red-600 italic mb-4'>DATA</h3>
+                <h3 className='text-red-600 italic mb-4'>DATA</h3>
                 <p>
-                    <span>Block ID: <span className='pl-1 font-mono text-xl'>{entity.blockID}</span></span>
+                    <span>Block ID: <span className='font-mono font-bold'>{entity.blockID}</span></span>
                 </p>
                 <p className='mt-3'>
                     <span>Block Hash: <span className='pl-1 font-mono'>{entity.blockHash}</span></span>
@@ -148,9 +148,9 @@ const EntitySearch: React.FC = () => {
             break;
         case ENTITIES.SKIP_STAGE_3:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
-                <h3 className='text-xl text-red-600 italic mb-4'>DATA</h3>
+                <h3 className='text-red-600 italic mb-4'>DATA</h3>
                 <p>
-                    <span>Index: <span className='pl-1 font-mono text-xl'>{entity.index}</span></span>
+                    <span>Index: <span className='font-mono font-bold'>{entity.index}</span></span>
                 </p>
                 <p className='mt-3'>
                     <span>Hash: <span className='pl-1 font-mono'>{entity.hash}</span></span>
@@ -176,7 +176,7 @@ const EntitySearch: React.FC = () => {
             break;
         default:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
-                <h3 className='text-xl text-red-600 italic mb-4'>DATA</h3>
+                <h3 className='text-red-600 italic mb-4'>DATA</h3>
                 <JSONPretty id="json-pretty" data={entity} />
             </div>
             break;
@@ -194,7 +194,7 @@ const EntitySearch: React.FC = () => {
                   <h2 className='uppercase mb-8'>{responseType.replaceAll('_', ' ')}</h2>
 
                   {error !== '' ? <p className='text-red-600'>{error}</p> : (<>
-                     <div className='md:text-lg text-base'>
+                     <div className='text-base'>
                          {entityContent}
                      </div>
                   </>)}

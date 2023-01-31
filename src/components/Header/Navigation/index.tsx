@@ -33,12 +33,9 @@ const Navigation: React.FC<Props> = ({ children }) => {
     const handleToggleMenu = () => setIsOpened(isOpened => !isOpened);
 
     return (
-      <nav className={cls(styles.navigation, 'md:mt-16 mt-10 md:mb-20 mb-10')}>
+      <nav className={cls(styles.navigation, 'md:mt-12 mt-10 md:mb-16 mb-10 lg:pt-8')}>
 
-          <div className='lg:block hidden'>
-              <h2 className='block text-center text-xl mb-16'>what do you want to explore<span className='font-mono text-2xl relative top-0.25 left-1 font-normal'>?</span></h2>
-          </div>
-              {children}
+          {children}
           <div className='lg:block hidden'>
               <hr className='mt-8 mb-8'/>
 
@@ -60,10 +57,10 @@ const Navigation: React.FC<Props> = ({ children }) => {
 
           <div className='lg:hidden block'>
               <div
-                  className='flex justify-center items-center cursor-pointer mb-8'
+                  className='flex justify-center items-center cursor-pointer mb-6'
                   onClick={handleToggleMenu}
               >
-                  <h2 className='block text-center text-lg px-4'>your way to explore</h2>
+                  <h2 className='block text-center text-base px-4'>your way to explore</h2>
                   <img
                       src={arrowDown}
                       alt='open'

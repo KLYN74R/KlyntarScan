@@ -63,8 +63,8 @@ const LatestBlocks: React.FC = () => {
 
     const openBlockDetails = (block: any) => {
         MySwal.fire({
-            title: <strong className='md:text-2xl text-xl'>Block #{block.rid}</strong>,
-            html: <div className='text-left text-black md:text-lg text-base'>
+            title: <strong className='text-xl'>Block #{block.rid}</strong>,
+            html: <div className='text-left text-black text-base'>
                 <p className='mt-3'>
                     <span><span className='text-red-600'>Hash:</span> <span className='pl-1 font-mono'>{block.hash}</span></span>
                 </p>
@@ -87,7 +87,7 @@ const LatestBlocks: React.FC = () => {
                     </>)}
                 </div>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Created at:</span> <span className='pl-1 font-mono'>{moment(block.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
+                    <span><span className='text-red-600'>Published at:</span> <span className='pl-1 font-mono'>{moment(block.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
                 </p>
             </div>,
             icon: 'info',
@@ -105,7 +105,7 @@ const LatestBlocks: React.FC = () => {
                 <div>
                     <h2 className='uppercase mb-8'>Latest blocks</h2>
 
-                    {isError ? <p className='text-xl text-red-600'>Connection failed.</p> : (<>
+                    {isError ? <p className='text-base text-red-600'>Connection failed.</p> : (<>
                         <div className='relative overflow-x-auto bg-slate-50 pb-5'>
                             <table
                                 className="table-fixed w-full text-sm text-left"

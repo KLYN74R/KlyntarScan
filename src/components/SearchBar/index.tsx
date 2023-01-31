@@ -27,7 +27,7 @@ const SearchBar: React.FC = () => {
                   type='text'
                   maxLength={1000}
                   minLength={1}
-                  placeholder={'Find by any ID:    symbioteID   |   blockid   |   RID   |   txid   |   mutationid   |   alias'}
+                  placeholder={'Find by any ID:    symbioteID   |   blockID   |   RID   |   txID   |   mutationID   |   alias'}
                   onChange={handleChangeQuery}
                   onKeyDown={handleEnterInput}
               />
