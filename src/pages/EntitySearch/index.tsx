@@ -38,7 +38,7 @@ const EntitySearch: React.FC = () => {
         }
 
         setResponseType(data.responseType);
-        setEntityContent(generateContent(data.responseType, data.data));
+        setEntityContent(generateContent(data.responseType,data.data));
     } catch (e: any) {
         setError(e.message);
         throw e;
@@ -53,7 +53,7 @@ const EntitySearch: React.FC = () => {
     switch (responseType) {
         case ENTITIES.EVENT_RECEIPT:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
-                    <h3 className='text-red-600 italic mb-4'>DATA</h3>
+                    
                     <p>
                         <span>ID: <span className='font-mono font-bold'>{entity.id}</span></span>
                     </p>
@@ -67,7 +67,7 @@ const EntitySearch: React.FC = () => {
             break;
         case ENTITIES.BLOCK_BY_ID:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
-                <h3 className='text-red-600 italic mb-4'>DATA</h3>
+                
                 <p>
                     <span>Index: <span className='font-mono font-bold'>{entity.index}</span></span>
                 </p>
@@ -95,7 +95,7 @@ const EntitySearch: React.FC = () => {
             break;
         case ENTITIES.BLOCK_BY_GRID:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
-                <h3 className='text-red-600 italic mb-4'>DATA</h3>
+                
                 <p>
                     <span>Index: <span className='font-mono font-bold'>{entity.index}</span></span>
                 </p>
@@ -123,7 +123,7 @@ const EntitySearch: React.FC = () => {
             break;
         case ENTITIES.SUPER_FINALIZATION_PROOF:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
-                <h3 className='text-red-600 italic mb-4'>DATA</h3>
+                
                 <p>
                     <span>Block ID: <span className='font-mono font-bold'>{entity.blockID}</span></span>
                 </p>
@@ -148,7 +148,7 @@ const EntitySearch: React.FC = () => {
             break;
         case ENTITIES.SKIP_STAGE_3:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
-                <h3 className='text-red-600 italic mb-4'>DATA</h3>
+                
                 <p>
                     <span>Index: <span className='font-mono font-bold'>{entity.index}</span></span>
                 </p>
@@ -176,7 +176,7 @@ const EntitySearch: React.FC = () => {
             break;
         default:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
-                <h3 className='text-red-600 italic mb-4'>DATA</h3>
+                
                 <JSONPretty id="json-pretty" data={entity} />
             </div>
             break;
@@ -191,7 +191,8 @@ const EntitySearch: React.FC = () => {
               <Loader/>
           ) : (
               <div>
-                  <h2 className='uppercase mb-8'>{responseType.replaceAll('_', ' ')}</h2>
+
+                <h2 style={{textAlign: 'center'}} className='uppercase mb-8 text-red-600'><b>Result</b></h2>
 
                   {error !== '' ? <p className='text-red-600'>{error}</p> : (<>
                      <div className='text-base'>
