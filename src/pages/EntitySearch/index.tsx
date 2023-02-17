@@ -192,7 +192,7 @@ const EntitySearch: React.FC = () => {
           ) : (
               <div>
 
-                <h2 style={{textAlign: 'center'}} className='uppercase mb-8 text-red-600'><b>Result</b></h2>
+                <h2 style={{textAlign:'center'}} className='uppercase mb-8 text-red-600'><b>Result</b></h2>
 
                   {error !== '' ? <p className='text-red-600'>{error}</p> : (<>
                      <div className='text-base'>
