@@ -32,7 +32,7 @@ const LatestTransactions: React.FC = () => {
     const initBlocks = async () => {
         try {
             const response = await api.get(ENDPOINTS.LATEST_BLOCK_ID);
-            await getBlocks(response.data.RID);
+            await getBlocks(response.data.GRID);
         } catch (e) {
             setIsError('Connection failed');
             throw e;
@@ -51,7 +51,7 @@ const LatestTransactions: React.FC = () => {
     const handleLoadNextBlocks = async () => {
         if (blocks.length > 0) {
             setIsUpdating(true);
-            await getBlocks(blocks[blocks.length - 1].rid - 1)
+            await getBlocks(blocks[blocks.length - 1].grid - 1)
                 .catch(e => { throw e })
                 .finally(() => setTimeout(() => setIsUpdating(false), 150));
         }
@@ -63,7 +63,7 @@ const LatestTransactions: React.FC = () => {
             txs.push(...block.events.map((event: any) => {
                 return {
                     ...event,
-                    rid: block.rid,
+                    grid: block.grid,
                     time: block.time,
                     id: uuidv4()
                 }
@@ -72,11 +72,11 @@ const LatestTransactions: React.FC = () => {
         setTransactions(() => [...transactions, ...txs]);
     }
 
-    const lastBlockShowed = blocks.length > 0 && blocks[blocks.length - 1].rid === 0;
+    const lastBlockShowed = blocks.length > 0 && blocks[blocks.length - 1].grid === 0;
 
     const openTransactionDetails = (transaction: any) => {
         MySwal.fire({
-            title: <strong className='text-xl leading-normal'>Transaction<br/>in Block #{transaction.rid}</strong>,
+            title: <strong className='text-xl leading-normal'>Transaction<br/>in Block #{transaction.grid}</strong>,
             html: <div className='text-left text-black text-base'>
                 <p className='mt-3'>
                     <span><span className='text-red-600'>Creator:</span> <span className='pl-1 font-mono'>{transaction.creator}</span></span>
@@ -108,7 +108,7 @@ const LatestTransactions: React.FC = () => {
                     <h2 className='uppercase mb-4'>Latest transactions</h2>
                     {blocks.length > 0 && (
                         <h2 className='uppercase mb-8 text-red-600'>
-                            Blocks: <span className='text-black'>{blocks[0].rid} - {blocks[blocks.length - 1].rid}</span>
+                            Blocks: <span className='text-black'>{blocks[0].grid} - {blocks[blocks.length - 1].grid}</span>
                         </h2>
                     )}
 
@@ -143,7 +143,7 @@ const LatestTransactions: React.FC = () => {
                                                     className='block p-1 border border-slate-400 rounded mr-2 cursor-pointer'
                                                     onClick={() => openTransactionDetails(transaction)}
                                                 />
-                                                <span className='block'>{transaction.rid}</span>
+                                                <span className='block'>{transaction.grid}</span>
                                             </div>
                                         </th>
                                         <td className="px-3 py-4 whitespace-nowrap w-1/5 truncate">{transaction.creator}</td>

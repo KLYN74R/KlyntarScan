@@ -93,7 +93,7 @@ const EntitySearch: React.FC = () => {
                 </div>
             </div>
             break;
-        case ENTITIES.BLOCK_BY_RID:
+        case ENTITIES.BLOCK_BY_GRID:
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
                 <h3 className='text-red-600 italic mb-4'>DATA</h3>
                 <p>

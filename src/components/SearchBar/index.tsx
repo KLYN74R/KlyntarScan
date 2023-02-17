@@ -27,7 +27,7 @@ const SearchBar: React.FC = () => {
                   type='text'
                   maxLength={1000}
                   minLength={1}
-                  placeholder={'Find by any ID:    symbioteID   |   blockID   |   RID   |   txID   |   mutationID   |   alias'}
+                  placeholder={'Find by any ID:    symbioteID   |   blockID   |   GRID   |   txID   |   mutationID   |   alias   |   cellID'}
                   onChange={handleChangeQuery}
                   onKeyDown={handleEnterInput}
               />
@@ -36,7 +36,7 @@ const SearchBar: React.FC = () => {
                   onClick={handleSubmitSearch}
               >
                   Find<span aria-hidden>_</span>
-                  <span aria-hidden className={styles.cybrBtn__glitch}>Event</span>
+                  <span aria-hidden className={styles.cybrBtn__glitch}>Data</span>
                   <span aria-hidden className={styles.cybrBtn__tag}>KLY</span>
               </button>
           </div>

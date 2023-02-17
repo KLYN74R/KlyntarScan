@@ -29,7 +29,7 @@ const LatestBlocks: React.FC = () => {
     const initBlocks = async () => {
         try {
             const response = await api.get(ENDPOINTS.LATEST_BLOCK_ID);
-            await getBlocks(response.data.RID);
+            await getBlocks(response.data.GRID);
         } catch (e) {
             setIsError('Connection failed');
             throw e;
@@ -46,13 +46,13 @@ const LatestBlocks: React.FC = () => {
     const handleLoadNextBlocks = async () => {
         if (blocks.length > 0) {
             setIsUpdating(true);
-            await getBlocks(blocks[blocks.length - 1].rid - 1)
+            await getBlocks(blocks[blocks.length - 1].grid - 1)
                 .catch(e => { throw e })
                 .finally(() => setTimeout(() => setIsUpdating(false), 150));
         }
     }
 
-    const lastBlockShowed = blocks.length > 0 && blocks[blocks.length - 1].rid === 0;
+    const lastBlockShowed = blocks.length > 0 && blocks[blocks.length - 1].grid === 0;
 
     const showEventsDetails = (e: any) => {
         const btn = e.target;
@@ -63,19 +63,19 @@ const LatestBlocks: React.FC = () => {
 
     const openBlockDetails = (block: any) => {
         MySwal.fire({
-            title: <strong className='text-xl'>Block #{block.rid}</strong>,
+            title: <strong className='text-xl'>Block #{block.grid}</strong>,
             html: <div className='text-left text-black text-base'>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Hash:</span> <span className='pl-1 font-mono'>{block.hash}</span></span>
+                    <span><span className='text-red-600'>Hash:</span><span className='pl-1 font-mono'>{block.hash}</span></span>
                 </p>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Subchain (pool):</span> <span className='pl-1 font-mono'>{block.creator}</span></span>
+                    <span><span className='text-red-600'>Pool:</span><span className='pl-1 font-mono'>{block.creator}</span></span>
                 </p>
                 <p className='mt-3'>
-                    <span><span className='text-red-600'>Subchain index:</span> <span className='pl-1 font-mono'>{block.index}</span></span>
+                    <span><span className='text-red-600'>Index:</span><span className='pl-1 font-mono'>{block.index}</span></span>
                 </p>
                 <div className='mt-3'>
-                    <span><span className='text-red-600'>Events:</span> <span className='pl-1 font-mono'>{block.events.length}</span></span>
+                    <span><span className='text-red-600'>Events:</span><span className='pl-1 font-mono'>{block.events.length}</span></span>
                     {block.events.length > 0 && (<>
                        <span
                            onClick={showEventsDetails}
@@ -91,6 +91,7 @@ const LatestBlocks: React.FC = () => {
                 </p>
             </div>,
             icon: 'info',
+            iconColor:'#db0000',
             cancelButtonText: 'Dismiss',
             showCancelButton: true,
             showConfirmButton: false
@@ -113,10 +114,10 @@ const LatestBlocks: React.FC = () => {
                             >
                                 <thead className="text-red-600 uppercase bg-slate-50 border-b text-center">
                                     <tr>
-                                        <th scope="col" className="px-3 py-4 w-1/12">Real<br/>index</th>
+                                        <th scope="col" className="px-3 py-4 w-1/12">GRID</th>
                                         <th scope="col" className="px-3 py-4 w-1/6">Hash</th>
-                                        <th scope="col" className="px-3 py-4 w-1/6">Subchain (pool)</th>
-                                        <th scope="col" className="px-0 py-4 w-1/12">Subchain index</th>
+                                        <th scope="col" className="px-3 py-4 w-1/6">Pool</th>
+                                        <th scope="col" className="px-0 py-4 w-1/12">Index</th>
                                         <th scope="col" className="px-3 py-4 w-1/12">Events</th>
                                         <th scope="col" className="px-3 py-4 w-1/12">Age</th>
                                     </tr>
@@ -124,7 +125,7 @@ const LatestBlocks: React.FC = () => {
                                 <tbody>
                                 {blocks.map(block => (
                                     <tr
-                                        key={block.rid}
+                                        key={block.grid}
                                         className="bg-slate-50 border-b last:border-0 font-mono text-gray-900 text-center"
                                         style={{ fontSize: 16 }}
                                     >
@@ -137,7 +138,7 @@ const LatestBlocks: React.FC = () => {
                                                     className='block p-1 border border-slate-400 rounded mr-2 cursor-pointer'
                                                     onClick={() => openBlockDetails(block)}
                                                 />
-                                                <span className='block'>{block.rid}</span>
+                                                <span className='block'>{block.grid}</span>
                                             </div>
                                         </th>
                                         <td className="px-3 py-4 whitespace-nowrap w-1/6 truncate">{block.hash}</td>

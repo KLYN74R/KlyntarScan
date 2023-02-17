@@ -1,11 +1,13 @@
+
 .searchBar input {
     border: 1px solid rgba(164, 164, 164, 0.5);
     font-family: 'Orbitron';
     font-weight: 400;
     padding: 2px 5px;
-    width: 60%;
+    width: 80%;
     margin-right: 5px;
 }
+
 
 .cybrBtn {
     --primary: hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 1%));
@@ -43,6 +45,7 @@
     height: 70px;
     line-height: 70px;
     transition: background 0.2s;
+    margin-left: 15px;
 }
 
 .cybrBtn:hover {
@@ -80,7 +83,7 @@
     line-height: 1;
     bottom: -5%;
     right: 5%;
-    font-weight: normal;
+    font-weight: bold;
     color: hsl(0, 0%, 0%);
     font-size: var(--label-size);
 }
