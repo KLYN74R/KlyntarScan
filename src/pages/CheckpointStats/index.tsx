@@ -43,7 +43,7 @@ const CheckpointStats: React.FC = () => {
                 {isError ? <p className='text-base text-red-600'>Connection failed.</p> : <div>
                     {checkpointData && (
                         <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto text-base'>
-                            <h3 className='text-base text-red-600 italic uppercase mb-4'>Header</h3>
+                            <h3 className='text-base text-red-600 italic uppercase mb-4'><b>Header</b></h3>
 
                             <p>
                                 <span>Index: <span className='pl-1 font-mono font-bold'>{checkpointData.ID}</span></span>
@@ -101,10 +101,10 @@ const CheckpointStats: React.FC = () => {
                                 </>)}
                             </p>
 
-                            <h3 className='text-base text-red-600 uppercase italic mt-8 mb-4 '>Payload info</h3>
+                            <h3 className='text-base text-red-600 uppercase italic mt-8 mb-4 '><b>Payload info</b></h3>
 
                             <p>
-                                <span>Previous payload checkpoint hash: <span className='pl-1 font-mono'>{checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH}</span></span>
+                                <span>Hash of payload from previous checkpoint: <span className='pl-1 font-mono'>{checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH}</span></span>
                                 {checkpointData.PREV_CHECKPOINT_PAYLOAD_HASH === '' && (<>
                                     <span className='text-blue-600 italic'>(genesis)</span>
                                 </>)}
