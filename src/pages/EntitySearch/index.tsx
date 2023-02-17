@@ -137,10 +137,10 @@ const EntitySearch: React.FC = () => {
                     <span>Aggregated Signature: <span className='pl-1 font-mono'>{entity.aggregatedSignature}</span></span>
                 </p>
                 <div className='mt-3'>
-                    <span><span>AFK Validators:</span> <span className='pl-1 font-mono'>{entity.afkValidators.length}</span></span>
-                    {entity.afkValidators.length > 0 && (<>
+                    <span><span>AFK Voters:</span> <span className='pl-1 font-mono'>{entity.afkVoters.length}</span></span>
+                    {entity.afkVoters.length > 0 && (<>
                         <div className='mt-1'>
-                            <JSONPretty id='json-pretty' data={entity.afkValidators}/>
+                            <JSONPretty id='json-pretty' data={entity.afkVoters}/>
                         </div>
                     </>)}
                 </div>
@@ -165,10 +165,10 @@ const EntitySearch: React.FC = () => {
                     <span>Aggregated Signature: <span className='pl-1 font-mono'>{entity.aggregatedSignature}</span></span>
                 </p>
                 <div className='mt-3'>
-                    <span><span>AFK Validators:</span> <span className='pl-1 font-mono'>{entity.afkValidators.length}</span></span>
-                    {entity.afkValidators.length > 0 && (<>
+                    <span><span>AFK Voters:</span> <span className='pl-1 font-mono'>{entity.afkVoters.length}</span></span>
+                    {entity.afkVoters.length > 0 && (<>
                         <div className='mt-1'>
-                            <JSONPretty id='json-pretty' data={entity.afkValidators}/>
+                            <JSONPretty id='json-pretty' data={entity.afkVoters}/>
                         </div>
                     </>)}
                 </div>

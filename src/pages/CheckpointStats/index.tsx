@@ -58,15 +58,15 @@ const CheckpointStats: React.FC = () => {
                             </p>
 
                             <p className='mt-3'>
-                                <span>AFK Signers: </span>
-                                {checkpointData.AFK_VALIDATORS.length === 0 ? (<>
+                                <span>AFK Voters: </span>
+                                {checkpointData.AFK_VOTERS.length === 0 ? (<>
                                     <span className='font-mono text-lg'>[]</span>
                                     <span className='text-blue-600 italic ml-2'>(genesis)</span>
                                 </>) : (
                                     <div>
                                         [
                                         <ul>
-                                            {checkpointData.AFK_VALIDATORS.map((validator: string, idx: number) => (
+                                            {checkpointData.AFK_VOTERS.map((validator: string, idx: number) => (
                                                 <li key={idx} className='font-mono ml-3 mt-2 first:mt-0'>{validator}</li>
                                             ))}
                                         </ul>
@@ -125,9 +125,9 @@ const CheckpointStats: React.FC = () => {
                             </div>
 
                             <div className='mt-3'>
-                                <span>Subchains metadata </span>
+                                <span>Pools metadata </span>
                                 <JSONPretty id="json-pretty-3" className='mt-3' data={{
-                                    SUBCHAINS_METADATA: checkpointData.SUBCHAINS_METADATA
+                                    POOL_METADATA: checkpointData.POOLS_METADATA
                                 }} />
                             </div>
                         </div>
