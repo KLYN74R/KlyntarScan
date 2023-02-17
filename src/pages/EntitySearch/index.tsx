@@ -55,13 +55,13 @@ const EntitySearch: React.FC = () => {
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
                     
                     <p>
-                        <span>ID: <span className='font-mono font-bold'>{entity.id}</span></span>
+                        <span className='text-red-600 font-bold'>ID:</span><span className='font-mono font-bold'>{entity.id}</span>
                     </p>
                     <p className='mt-3'>
-                        <span>Block ID: <span className='pl-1 font-mono'>{entity.blockID}</span></span>
+                    <span className='text-red-600 font-bold'>Block ID:</span><span className='pl-1 font-mono'>{entity.blockID}</span>
                     </p>
                     <p className='mt-3'>
-                        <span>Is OK: <span className='pl-1 font-mono'>{entity.isOk ? 'true' : 'false'}</span></span>
+                        <span className='text-red-600 font-bold'>Is OK:</span><span className='pl-1 font-mono'>{entity.isOk ? 'true' : 'false'}</span>
                     </p>
                 </div>
             break;
@@ -69,22 +69,22 @@ const EntitySearch: React.FC = () => {
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
                 
                 <p>
-                    <span>Index: <span className='font-mono font-bold'>{entity.index}</span></span>
+                    <span className='text-red-600 font-bold'>Index:</span><span className='font-mono font-bold'>{entity.index}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Creator: <span className='pl-1 font-mono'>{entity.creator}</span></span>
+                    <span className='text-red-600 font-bold'>Creator:</span><span className='pl-1 font-mono'>{entity.creator}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>PrevHash: <span className='pl-1 font-mono'>{entity.prevHash}</span></span>
+                    <span className='text-red-600 font-bold'>PrevHash:</span><span className='pl-1 font-mono'>{entity.prevHash}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Signature: <span className='pl-1 font-mono'>{entity.sig}</span></span>
+                    <span className='text-red-600 font-bold'>Signature:</span><span className='pl-1 font-mono'>{entity.sig}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Published at: <span className='pl-1 font-mono'>{moment(entity.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
+                    <span className='text-red-600 font-bold'>Published at:</span><span className='pl-1 font-mono'>{moment(entity.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span>
                 </p>
                 <div className='mt-3'>
-                    <span><span>Events:</span> <span className='pl-1 font-mono'>{entity.events.length}</span></span>
+                    <span className='text-red-600 font-bold'>Events:</span> <span className='pl-1 font-mono'>{entity.events.length}</span>
                     {entity.events.length > 0 && (<>
                         <div className='mt-1'>
                             <JSONPretty id='json-pretty' data={entity.events}/>
@@ -97,22 +97,22 @@ const EntitySearch: React.FC = () => {
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
                 
                 <p>
-                    <span>Index: <span className='font-mono font-bold'>{entity.index}</span></span>
+                    <span className='text-red-600 font-bold'>Index:</span><span className='font-mono'>{entity.index}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Creator: <span className='pl-1 font-mono'>{entity.creator}</span></span>
+                    <span className='text-red-600 font-bold'>Creator:</span><span className='pl-1 font-mono'>{entity.creator}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>PrevHash: <span className='pl-1 font-mono'>{entity.prevHash}</span></span>
+                    <span className='text-red-600 font-bold'>PrevHash:</span><span className='pl-1 font-mono'>{entity.prevHash}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Signature: <span className='pl-1 font-mono'>{entity.sig}</span></span>
+                    <span className='text-red-600 font-bold'>Signature:</span><span className='pl-1 font-mono'>{entity.sig}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Published at: <span className='pl-1 font-mono'>{moment(entity.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span></span>
+                    <span className='text-red-600 font-bold'>Published at:</span><span className='pl-1 font-mono'>{moment(entity.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span>
                 </p>
                 <div className='mt-3'>
-                    <span><span>Events:</span> <span className='pl-1 font-mono'>{entity.events.length}</span></span>
+                    <span className='text-red-600 font-bold'>Events:</span><span className='pl-1 font-mono'>{entity.events.length}</span>
                     {entity.events.length > 0 && (<>
                         <div className='mt-1'>
                             <JSONPretty id='json-pretty' data={entity.events}/>
@@ -125,19 +125,19 @@ const EntitySearch: React.FC = () => {
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
                 
                 <p>
-                    <span>Block ID: <span className='font-mono font-bold'>{entity.blockID}</span></span>
+                    <span className='text-red-600 font-bold'>Block ID:</span><span className='font-mono font-bold'>{entity.blockID}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Block Hash: <span className='pl-1 font-mono'>{entity.blockHash}</span></span>
+                    <span className='text-red-600 font-bold'>Block Hash:</span><span className='pl-1 font-mono'>{entity.blockHash}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Aggregated Pub: <span className='pl-1 font-mono'>{entity.aggregatedPub}</span></span>
+                    <span className='text-red-600 font-bold'>Aggregated Pub:</span><span className='pl-1 font-mono'>{entity.aggregatedPub}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Aggregated Signature: <span className='pl-1 font-mono'>{entity.aggregatedSignature}</span></span>
+                    <span className='text-red-600 font-bold'>Aggregated Signature:</span><span className='pl-1 font-mono'>{entity.aggregatedSignature}</span>
                 </p>
                 <div className='mt-3'>
-                    <span><span>AFK Voters:</span> <span className='pl-1 font-mono'>{entity.afkVoters.length}</span></span>
+                    <span className='text-red-600 font-bold'>AFK Voters:</span><span className='pl-1 font-mono'>{entity.afkVoters.length}</span>
                     {entity.afkVoters.length > 0 && (<>
                         <div className='mt-1'>
                             <JSONPretty id='json-pretty' data={entity.afkVoters}/>
@@ -150,22 +150,22 @@ const EntitySearch: React.FC = () => {
             content = <div className='bg-slate-50 md:p-8 p-4 overflow-x-auto'>
                 
                 <p>
-                    <span>Index: <span className='font-mono font-bold'>{entity.index}</span></span>
+                    <span className='text-red-600 font-bold'>Index:</span><span className='font-mono font-bold'>{entity.index}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Hash: <span className='pl-1 font-mono'>{entity.hash}</span></span>
+                    <span className='text-red-600 font-bold'>Hash:</span><span className='pl-1 font-mono'>{entity.hash}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Subchain: <span className='pl-1 font-mono'>{entity.subchain}</span></span>
+                    <span className='text-red-600 font-bold'>Subchain:</span><span className='pl-1 font-mono'>{entity.subchain}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Aggregated Pub: <span className='pl-1 font-mono'>{entity.aggregatedPub}</span></span>
+                    <span className='text-red-600 font-bold'>Aggregated Pub:</span><span className='pl-1 font-mono'>{entity.aggregatedPub}</span>
                 </p>
                 <p className='mt-3'>
-                    <span>Aggregated Signature: <span className='pl-1 font-mono'>{entity.aggregatedSignature}</span></span>
+                    <span className='text-red-600 font-bold'>Aggregated Signature:</span><span className='pl-1 font-mono'>{entity.aggregatedSignature}</span>
                 </p>
                 <div className='mt-3'>
-                    <span><span>AFK Voters:</span> <span className='pl-1 font-mono'>{entity.afkVoters.length}</span></span>
+                    <span className='text-red-600 font-bold'>AFK Voters:</span><span className='pl-1 font-mono'>{entity.afkVoters.length}</span>
                     {entity.afkVoters.length > 0 && (<>
                         <div className='mt-1'>
                             <JSONPretty id='json-pretty' data={entity.afkVoters}/>
