@@ -105,7 +105,7 @@ const LatestTransactions: React.FC = () => {
                 <Loader/>
             ) : (
                 <div>
-                    <h2 className='uppercase mb-4'>Latest transactions</h2>
+                    <h2 className='uppercase mb-8'>Latest transactions</h2>
                     {blocks.length > 0 && (
                         <h2 className='uppercase mb-8 text-red-600'>
                             Blocks: <span className='text-black'>{blocks[0].grid} - {blocks[blocks.length - 1].grid}</span>
