@@ -84,7 +84,7 @@ const EntitySearch: React.FC = () => {
                     <span className='text-red-600 font-bold'>Published at:</span><span className='pl-1 font-mono'>{moment(entity.time).utc().format('hh:mm A MM/DD/YYYY')} UTC+0</span>
                 </p>
                 <div className='mt-3'>
-                    <span className='text-red-600 font-bold'>Events:</span> <span className='pl-1 font-mono'>{entity.events.length}</span>
+                    <span className='text-red-600 font-bold'>Events:</span><span className='pl-1 font-mono'>{entity.events.length}</span>
                     {entity.events.length > 0 && (<>
                         <div className='mt-1'>
                             <JSONPretty id='json-pretty' data={entity.events}/>
