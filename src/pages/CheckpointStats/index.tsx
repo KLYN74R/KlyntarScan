@@ -46,7 +46,7 @@ const CheckpointStats: React.FC = () => {
                             <h3 className='text-base text-red-600 italic uppercase mb-4'><b>Header</b></h3>
 
                             <p>
-                                <span>Index: <span className='pl-1 font-mono font-bold'>{checkpointData.ID}</span></span>
+                                <span>Index: <span className='pl-1 font-mono'>{checkpointData.ID}</span></span>
                                 {/*{checkpointData.ID === -1 && (<span className='text-blue-600 italic ml-2'>(genesis)</span>)}*/}
                             </p>
 
