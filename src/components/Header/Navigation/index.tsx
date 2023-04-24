@@ -7,15 +7,15 @@ import arrowDown from '../../../assets/img/icons/arrow-down.png';
 
 const navigation = [
     {
-        title: 'checkpoint stAts',
+        title: 'checkpoint stats',
         path: '/latest_checkpoint'
     },
     {
-        title: 'lAtest trAnsActions',
+        title: 'latest transactions',
         path: '/latest_transaction'
     },
     {
-        title: 'lAtest blocks',
+        title: 'latest blocks',
         path: '/latest_blocks'
     },
     {
