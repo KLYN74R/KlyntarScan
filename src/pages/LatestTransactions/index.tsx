@@ -60,9 +60,9 @@ const LatestTransactions: React.FC = () => {
     const saveTransactions = (blocks: Array<any>) => {
         const txs: Array<any> = [];
         blocks.forEach((block: any) => {
-            txs.push(...block.events.map((event: any) => {
+            txs.push(...block.transactions.map((transaction: any) => {
                 return {
-                    ...event,
+                    ...transaction,
                     grid: block.grid,
                     time: block.time,
                     id: uuidv4()

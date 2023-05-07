@@ -54,7 +54,7 @@ const LatestBlocks: React.FC = () => {
 
     const lastBlockShowed = blocks.length > 0 && blocks[blocks.length - 1].grid === 0;
 
-    const showEventsDetails = (e: any) => {
+    const showTransactionDetails = (e: any) => {
         const btn = e.target;
         const div = btn.parentNode;
         div.querySelector('div').classList.toggle('hidden');
@@ -75,14 +75,14 @@ const LatestBlocks: React.FC = () => {
                     <span><span className='text-red-600'>Index:</span><span className='pl-1 font-mono'>{block.index}</span></span>
                 </p>
                 <div className='mt-3'>
-                    <span><span className='text-red-600'>Events:</span><span className='pl-1 font-mono'>{block.events.length}</span></span>
-                    {block.events.length > 0 && (<>
+                    <span><span className='text-red-600'>Transactions:</span><span className='pl-1 font-mono'>{block.transactions.length}</span></span>
+                    {block.transactions.length > 0 && (<>
                        <span
-                           onClick={showEventsDetails}
+                           onClick={showTransactionDetails}
                            className='inline-block ml-3 underline cursor-pointer'
                        >open</span>
                         <div className='mt-1 hidden'>
-                            <JSONPretty id='json-pretty' data={block.events}/>
+                            <JSONPretty id='json-pretty' data={block.transactions}/>
                         </div>
                     </>)}
                 </div>
@@ -118,7 +118,7 @@ const LatestBlocks: React.FC = () => {
                                         <th scope="col" className="px-3 py-4 w-1/6">Hash</th>
                                         <th scope="col" className="px-3 py-4 w-1/6">Pool</th>
                                         <th scope="col" className="px-0 py-4 w-1/12">Index</th>
-                                        <th scope="col" className="px-3 py-4 w-1/12">Events</th>
+                                        <th scope="col" className="px-3 py-4 w-1/12">Transactions</th>
                                         <th scope="col" className="px-3 py-4 w-1/12">Age</th>
                                     </tr>
                                 </thead>
@@ -144,7 +144,7 @@ const LatestBlocks: React.FC = () => {
                                         <td className="px-3 py-4 whitespace-nowrap w-1/6 truncate">{block.hash}</td>
                                         <td className="px-6 py-4 whitespace-nowrap w-1/6 truncate">{block.creator}</td>
                                         <td className="px-6 py-4 whitespace-nowrap w-1/12">{block.index}</td>
-                                        <td className="px-3 py-4 whitespace-nowrap w-1/12">{block.events.length}</td>
+                                        <td className="px-3 py-4 whitespace-nowrap w-1/12">{block.transactions.length}</td>
                                         <td className="px-3 py-4 whitespace-nowrap w-1/12 truncate">{moment(block.time).utc().fromNow(true)}</td>
                                     </tr>
                                 ))}
